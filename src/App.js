@@ -10,7 +10,7 @@ function App() {
       <MenuBar></MenuBar>
       <Routes>
           <Route path='/' element={
-              <div className='container'>
+              <div className='ecommerce container' style={{paddingTop:"100px"}}>
                   <LandingPage></LandingPage>
               </div>
             }>

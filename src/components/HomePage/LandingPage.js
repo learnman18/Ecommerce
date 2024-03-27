@@ -2,6 +2,8 @@ import React from "react";
 import firstImg from "../Images/features-light-1.jpg"
 import coverImg from "../Images/features-light-2.jpg"
 import "../style.css"
+import FeaturedItems from "./FeaturedServices";
+import Footer from "../Footer/Footer";
 
 const LandingPage = () => {
 
@@ -23,7 +25,8 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
-
+            <FeaturedItems></FeaturedItems>
+            <Footer></Footer>
         </>
     )
 }
