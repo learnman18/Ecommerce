@@ -1,13 +1,7 @@
 import React, { useEffect , useState } from "react";
-import img1 from "../Images/masonry-portfolio-1.jpg";
-import img2 from "../Images/masonry-portfolio-2.jpg"
-import img3 from "../Images/masonry-portfolio-3.jpg"
-import img4 from "../Images/masonry-portfolio-4.jpg"
-import img5 from "../Images/masonry-portfolio-5.jpg"
-import img6 from "../Images/masonry-portfolio-6.jpg"
-import img7 from "../Images/masonry-portfolio-7.jpg"
-import img8 from "../Images/masonry-portfolio-8.jpg"
-import img9 from "../Images/masonry-portfolio-9.jpg"
+import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+
+import FeaturedProducts from "./FeatuerdProducts"
 
 const FeaturedItems = () => {
 
@@ -21,6 +15,8 @@ const FeaturedItems = () => {
         position:"relative",
         height:"1079.31px"
     }
+
+    console.log("FeaturedProducts" , FeaturedProducts)
 
     useEffect(() => {
         const handleResize = () => {
@@ -122,101 +118,31 @@ const FeaturedItems = () => {
     return(
         <>
             <div className="mt-5 featured">
-                <div class="container section-title">
+                <div className="container section-title">
                     <h2>Portfolio</h2>
                     <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
                 </div> 
                 <div className="compTwoContainer mt-5">
                     <div className="row gy-4 isotope-container" style={parentPosition}>
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app" style={positioning}>
-                            <img src={img1} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>App 1</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img1} title="App 1"  className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-product" style={positioning}>
-                            <img src={img2} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>Product 1</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img2} title="Product 1" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding" style={positioning}>
-                            <img src={img3} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>Branding 1</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img3} title="Branding 1" className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app" style={positioning}>
-                            <img src={img4} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>App 2</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img4} title="App 2"  className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-product" style={positioning}>
-                            <img src={img5} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>Product 2</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img5} title="Product 2"  className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding" style={positioning}>
-                            <img src={img6} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>Branding 2</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img6} title="Branding 2"  className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app" style={positioning}>
-                            <img src={img7} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>App 3</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img7} title="App 3"  className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-product" style={positioning}>
-                            <img src={img8} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>Product 3</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img8} title="Product 3"  className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding" style={positioning}>
-                            <img src={img9} className="img-fluid" alt="" />
-                            <div className="portfolio-info">
-                                <h4>Branding 3</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href={img9} title="Branding 2"  className="glightbox preview-link"><i className="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
+                        {
+                            FeaturedProducts.map((curItem , index)=>{
+                                return(
+                                    <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app" key={index} style={positioning}>
+                                        <img src={curItem.imageProduct} className="img-fluid" alt="" />
+                                        <div className="portfolio-info">
+                                            <h4>App 1</h4>
+                                            <p>Lorem ipsum, dolor sit</p>
+                                            <a href={curItem.imageProduct} title="App 1"  className="glightbox preview-link">
+                                                <i className="bi bi-zoom-in"></i>
+                                            </a>
+                                            <a href="/" title="More Details" className="details-link">
+                                                <i className="bi bi-link-45deg"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                )  
+                            })
+                        }
                     </div>
                 </div>
             </div>    
