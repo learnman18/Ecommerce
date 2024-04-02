@@ -9,7 +9,7 @@ const LandingPage = () => {
 
     return(
         <>
-            <div className="row gy-4 align-items-center features-item">
+            <div className="row gy-4 align-items-center features-item" style={{paddingBottom:"60px"}}>
                 <div className="col-lg-5 order-2 order-lg-1 aos-init" data-aos="fade-up" data-aos-delay="200">
                     <h3>Corporis temporibus maiores provident</h3>
                     <p>

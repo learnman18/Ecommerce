@@ -75,7 +75,7 @@ right: 12px;
 bottom: -100%;
 z-index: 3;
 transition: all ease-in-out 0.5s;
-background: rgba(var(--background-color-rgb), 0.9);
+background: rgba(255,255,255,0.9);
 padding: 15px;
 }
 
@@ -171,5 +171,27 @@ bottom: 0;
 .footer .credits {
     margin-top: 6px;
     font-size: 13px;
+}
+
+.cartCounter {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(#fff, #f9f9f9);
+    display: inline-block;
+    border: 1px solid #c2c2c2;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 50%;
+    padding-top: 1px;
+    line-height: 1;
+}
+
+.count {
+    display: inline-block;
+    padding: 3px 6px;
+    width: 46px;
+    border-radius: 2px;
+    margin: 0 5px;
+    text-align: center;
 }
 

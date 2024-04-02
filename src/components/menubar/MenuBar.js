@@ -18,7 +18,20 @@ const MenuBar = () => {
                                     <a className="nav-link active" aria-current="page" href="/">Home</a>
                                 </li>
                                 <li className="nav-item">
+                                    <a className="nav-link active" aria-current="page" href="/">Products</a>
+                                </li>
+                                <li className="nav-item">
                                     <a className="nav-link" href="/">Link</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a href="cart" class="nav-link">
+                                        <i class="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}>
+                                            <span style={{fontSize:"9px"}} class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">11</span>
+                                        </i>
+                                        <span>Cart</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
