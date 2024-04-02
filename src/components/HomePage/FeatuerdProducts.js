@@ -10,31 +10,49 @@ import imgNine from "../Images/masonry-portfolio-9.jpg"
 
 const FeaturedProducts = [
     {
-        imageProduct : imgOne
+        imageName : imgOne,
+        productName : "Perfume",
+        productDescription:"lorem ispum , dolor sit"
     },
     {
-        imageProduct : imgTwo
+        imageName : imgTwo,
+        productName : "Coffee plate",
+        productDescription:"lorem ispum , dolor sit"
     },
     {
-        imageProduct : imgThree
+        imageName : imgThree,
+        productName : "Pot",
+        productDescription:"lorem ispum , dolor sit"
     },
     {
-        imageProduct : imgFour
+        imageName : imgFour,
+        productName : "Sunglass",
+        productDescription:"lorem ispum , dolor sit"
     },
     {
-        imageProduct : imgFive
+        imageName : imgFive,
+        productName : "Table light",
+        productDescription:"lorem ispum , dolor sit"
     },
     {
-        imageProduct : imgSix
+        imageName : imgSix,
+        productName : "Table",
+        productDescription:"lorem ispum , dolor sit"
     },
     {
-        imageProduct : imgSev
+        imageName : imgSev,
+        productName : "Camera Lens",
+        productDescription:"lorem ispum , dolor sit"
     },
     {
-        imageProduct : imgEight
+        imageName : imgEight,
+        productName : "Tea Cup",
+        productDescription:"lorem ispum , dolor sit"
     },
     {
-        imageProduct : imgNine
+        imageName : imgNine,
+        productName : "Watch",
+        productDescription:"lorem ispum , dolor sit"
     },
 
 ]

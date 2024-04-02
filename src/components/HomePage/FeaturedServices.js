@@ -128,14 +128,14 @@ const FeaturedItems = () => {
                             FeaturedProducts.map((curItem , index)=>{
                                 return(
                                     <div className="col-lg-4 col-md-6 portfolio-item isotope-item filter-app" key={index} style={positioning}>
-                                        <img src={curItem.imageProduct} className="img-fluid" alt="" />
+                                        <img src={curItem.imageName} className="img-fluid" alt="" />
                                         <div className="portfolio-info">
-                                            <h4>App 1</h4>
-                                            <p>Lorem ipsum, dolor sit</p>
-                                            <a href={curItem.imageProduct} title="App 1"  className="glightbox preview-link">
+                                            <h4>{curItem.productName}</h4>
+                                            <p>{curItem.productDescription}</p>
+                                            <a href={curItem.imageName} title="App 1"  className="glightbox preview-link">
                                                 <i className="bi bi-zoom-in"></i>
                                             </a>
-                                            <a href="/" title="More Details" className="details-link">
+                                            <a href={`selectedProdcuts/${curItem.productName}`} title="More Details" rel="noreferrer" target="_blank" className="details-link">
                                                 <i className="bi bi-link-45deg"></i>
                                             </a>
                                         </div>
