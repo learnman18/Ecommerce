@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle"
+import { Link, NavLink } from "react-router-dom";
 
 const MenuBar = () => {
     return(
@@ -15,23 +16,23 @@ const MenuBar = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Home</a>
+                                    <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Products</a>
+                                    <NavLink className="nav-link active" aria-current="page" to="/">Products</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/">Link</a>
+                                    <NavLink className="nav-link" to="/">Link</NavLink>
                                 </li>
                             </ul>
-                            <ul class="navbar-nav mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a href="cart" class="nav-link">
-                                        <i class="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}>
-                                            <span style={{fontSize:"9px"}} class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">11</span>
+                            <ul className="navbar-nav mb-2 mb-lg-0">
+                                <li className="nav-item">
+                                    <Link to="cart" className="nav-link">
+                                        <i className="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}>
+                                            <span style={{fontSize:"9px"}} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">11</span>
                                         </i>
                                         <span>Cart</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
