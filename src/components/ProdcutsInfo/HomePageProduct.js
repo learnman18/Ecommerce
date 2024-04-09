@@ -5,13 +5,8 @@ import CartToast from "../Toast";
 const HomePageProducts = ({prodcutName , productDescription , firstImage , secondImage , thirdImage , mainImage , productID , productPrice}) => {
 
     const [count , setCount] = useState(1);
-    // const [cartItems, setCartItems] = useState([])
-    // const [productsAddedToCart , setProductsAddedToCart] = useState({
-    //     "prodcutName" : prodcutName,
-    //     "productPrice" : productPrice
-    // })
-
-    const {AddToCart} = useCartContext()
+    const [alertForCartItem , setAlertForCartItem] = useState("hide")
+    const {AddToCart} = useCartContext() //custom hook created
     const productUrl = window.location.pathname;
 
     function CartIncrement() {
@@ -28,14 +23,9 @@ const HomePageProducts = ({prodcutName , productDescription , firstImage , secon
         mainImg.setAttribute("src" , getSrc);
     }
 
-
-    // const AddToCart = () => {
-    //     console.log("clicked")
-    //     setCartItems([...cartItems , {"prodcutName" : prodcutName, "productPrice" : productPrice}])
-    //     console.log(cartItems)
-    //     // localStorage.setItem("cartProduct" , JSON.stringify(productsAddedToCart))
-    // }
-
+    const AlertMsg = () => {
+        alertForCartItem === "hide" ? setAlertForCartItem("show") : setAlertForCartItem("hide");
+    }
 
 return(
     <>
@@ -73,13 +63,15 @@ return(
                         <button className="cartCounter" onClick={CartIncrement}>+</button>
                     </div>
                     <button className="btn btn-warning" onClick={()=> {
-                        AddToCart(prodcutName , productPrice, firstImage, productUrl)
+                        AddToCart(prodcutName , productPrice, firstImage, productUrl , count);
+                        AlertMsg();
                     }}>Add to cart</button>
                 </div>
             </div>
         </div>
-
-        <CartToast></CartToast>
+        <div>
+            <CartToast displayALertMsg={alertForCartItem}></CartToast>
+        </div>
     </>
 )
 }

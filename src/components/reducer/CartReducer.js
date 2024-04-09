@@ -1,17 +1,18 @@
 const CartReducer = (state , action) => {
 
     if(action.type === "ADD_TO_CART"){
-        const {prodcutName , productPrice, firstImage , productUrl} = action.payload;
+        const {prodcutName , productPrice, firstImage , productUrl, count}  = action.payload;
         // console.log(prodcutName , productPrice);
 
         let FeaturedProducts = {
             nameOfProduct : prodcutName,
             priceOfProduct : productPrice,
             productMainImage : firstImage,
-            urlOfProduct : productUrl
+            urlOfProduct : productUrl,
+            productQuantiity : count,
         }
 
-        console.log("FeaturedProducts",FeaturedProducts)
+        // console.log("FeaturedProducts",FeaturedProducts)
 
         return {
             ...state ,

@@ -5,13 +5,13 @@ const Cart = () => {
 
     const [count , setCount] = useState(1);
     const {cart} = useCartContext();
-    console.log("cart" , cart)
 
     function cartIncrement() {
         setCount(count + 1);
+        console.log("incremnt" , count)
     }
 
-    function cartDecrement() {
+    function cartDecrement(productQuantiity) {
         count > 1 && setCount(count - 1);
     }
 
@@ -21,12 +21,12 @@ const Cart = () => {
                 <div className="card" style={{marginTop:80}}>
                     {
                         cart[0] ?
-
+                        
                         <div className="card-body">
                             {
                                 cart.map((cartItem)=>{
                                         return(
-                                        <div>
+                                        <div key={cartItem.nameOfProduct}>
                                             <div className="">
                                                 <div className="d-flex" style={{gridColumnGap:"40px"}}>
                                                     <a href={cartItem.urlOfProduct}>
@@ -46,7 +46,8 @@ const Cart = () => {
                                             <div className="d-flex mt-4" style={{columnGap:"15px"}}>
                                                 <div style={{marginBottom:"5px"}}>
                                                     <button className="cartCounter" onClick={cartDecrement}>-</button>
-                                                    <p className="count">{count}</p>
+                                                    {/* <p className="count">{cartItem.productQuantiity + count - 1}</p> */}
+                                                    <p className="count">{cartItem.productQuantiity}</p>
                                                     <button className="cartCounter" onClick={cartIncrement}>+</button>
                                                 </div>
                                                 <div>

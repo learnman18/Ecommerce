@@ -9,8 +9,8 @@ const initialState = {
 
 const CartProvider = ({children}) => {
     const [state , dispatch] = useReducer(reducer , initialState);
-    const AddToCart = (prodcutName , productPrice , firstImage , productUrl) => {
-        dispatch({type : "ADD_TO_CART" , payload : {prodcutName , productPrice, firstImage , productUrl}});
+    const AddToCart = (prodcutName , productPrice , firstImage , productUrl , count) => {
+        dispatch({type : "ADD_TO_CART" , payload : {prodcutName , productPrice, firstImage , productUrl , count}});
     }
     return <CartContext.Provider value={{...state , AddToCart}}>{children}</CartContext.Provider>
 }
