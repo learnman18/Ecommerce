@@ -20,7 +20,7 @@ const ProductSpecification = () => {
                     <div key={currentProd.productId} className="ecommerce container" style={{marginTop:"80px"}}>
                         <HomePageProducts key={index = index+1} productID={currentProd.productId} firstImage={currentProd.productImg1} prodcutName={currentProd.selectedProductName}
                         secondImage={currentProd.productImg2} thirdImage={currentProd.productImg3}
-                        mainImage={currentProd.productMain} productDescription={currentProd.selectedProdDesc}
+                        mainImage={currentProd.productMain} productDescription={currentProd.selectedProdDesc} productPrice={currentProd.price}
                         ></HomePageProducts>
                     </div>
                 })

@@ -2,6 +2,7 @@ import React, { useEffect , useState } from "react";
 import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.css"
 
 import FeaturedProducts from "./FeatuerdProducts"
+import { Link } from "react-router-dom";
 
 const FeaturedItems = () => {
 
@@ -132,12 +133,12 @@ const FeaturedItems = () => {
                                         <div className="portfolio-info">
                                             <h4>{curItem.productName}</h4>
                                             <p>{curItem.productDescription}</p>
-                                            <a href={curItem.imageName} title="App 1"  className="glightbox preview-link">
+                                            <Link to={curItem.imageName} title="App 1"  className="glightbox preview-link">
                                                 <i className="bi bi-zoom-in"></i>
-                                            </a>
-                                            <a href={`selectedProdcuts/${curItem.productName}`} title="More Details" rel="noreferrer" target="_blank" className="details-link">
+                                            </Link>
+                                            <Link to={`selectedProdcuts/${curItem.productName}`} title="More Details" rel="noreferrer" target="_blank" className="details-link">
                                                 <i className="bi bi-link-45deg"></i>
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 )  
