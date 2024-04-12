@@ -63,7 +63,7 @@ return(
                         <button className="cartCounter" onClick={CartIncrement}>+</button>
                     </div>
                     <button className="btn btn-warning" onClick={()=> {
-                        AddToCart(prodcutName , productPrice, firstImage, productUrl , count);
+                        AddToCart(prodcutName , productPrice, firstImage, productUrl , count );
                         AlertMsg();
                     }}>Add to cart</button>
                 </div>

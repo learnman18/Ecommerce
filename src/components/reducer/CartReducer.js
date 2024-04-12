@@ -4,21 +4,34 @@ const CartReducer = (state , action) => {
         const {prodcutName , productPrice, firstImage , productUrl, count}  = action.payload;
         // console.log(prodcutName , productPrice);
 
-        let FeaturedProducts = {
-            nameOfProduct : prodcutName,
-            priceOfProduct : productPrice,
-            productMainImage : firstImage,
-            urlOfProduct : productUrl,
-            productQuantiity : count,
-        }
+        // Check if the product already exists in the cart
+        const existingProductIndex = state.cart.findIndex((item) => item.nameOfProduct === prodcutName);
 
+        if(existingProductIndex !== -1){
+            // Product already exists in the cart
+            // const updatedCart = [...state.cart];
+            return {
+                ...state,
+                // cart: updatedCart
+            };
+        }else {
+            //if product already does not exist
+            let FeaturedProducts = {
+                id : prodcutName,
+                nameOfProduct : prodcutName,
+                priceOfProduct : productPrice,
+                productMainImage : firstImage,
+                urlOfProduct : productUrl,
+                productQuantiity : count,
+            }
+            return {
+                ...state ,
+                cart : [...state.cart , FeaturedProducts]
+            }
+        }
         // console.log("FeaturedProducts",FeaturedProducts)
-
-        return {
-            ...state ,
-            cart : [...state.cart , FeaturedProducts]
-        }
     }
+
     return state;
 }
 

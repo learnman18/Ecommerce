@@ -22,6 +22,7 @@ const ProductSpecification = () => {
                         secondImage={currentProd.productImg2} thirdImage={currentProd.productImg3}
                         mainImage={currentProd.productMain} productDescription={currentProd.selectedProdDesc} productPrice={currentProd.price}
                         ></HomePageProducts>
+                        {/* Or I can pass all the props using only {...currentProd} this and it will accessible from the HomePageProducts.js page */}
                     </div>
                 })
             }
