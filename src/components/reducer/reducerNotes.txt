@@ -1,0 +1,105 @@
+const CartReducer = (state , action) => {
+
+    if(action.type === "ADD_TO_CART"){
+        const {prodcutName , productPrice, firstImage , productUrl, count}  = action.payload;
+        // console.log(prodcutName , productPrice);
+
+        // Check if the product already exists in the cart
+        const existingProductIndex = state.cart.findIndex((item) => item.nameOfProduct === prodcutName);
+
+        if(existingProductIndex !== -1){
+            // Product already exists in the cart
+            // const updatedCart = [...state.cart] ;
+            console.log("inside if block")
+            return {
+                // ...state,
+                // cart: updatedCart
+                cart : [FeaturedProducts]
+            };
+        }else {
+            //if product already does not exist
+            let FeaturedProducts = {
+                id : prodcutName,
+                nameOfProduct : prodcutName,
+                priceOfProduct : productPrice,
+                productMainImage : firstImage,
+                urlOfProduct : productUrl,
+                productQuantiity : count,
+            }
+            console.log("FeaturedProducts" , FeaturedProducts)
+            return {
+                ...state ,
+                cart : [...state.cart , FeaturedProducts]
+            }
+        }
+        // console.log("FeaturedProducts",FeaturedProducts)
+    }
+
+    return state;
+}
+
+export default CartReducer;
+
+
+NEW COde - 
+
+
+const CartReducer = (state , action) => {
+
+    if(action.type === "ADD_TO_CART"){
+        const {prodcutName , productPrice, firstImage , productUrl, count}  = action.payload;
+        // console.log(prodcutName , productPrice);
+
+        // Check if the product already exists in the cart
+        const existingProductIndex = state.cart.findIndex((item) => item.nameOfProduct === prodcutName);
+
+        if(existingProductIndex !== -1){
+            // Product already exists in the cart
+            // const updatedCart = [...state.cart] ;
+            console.log("inside if block")
+            let FeaturedProducts = {
+                id : prodcutName,
+                nameOfProduct : prodcutName,
+                priceOfProduct : productPrice,
+                productMainImage : firstImage,
+                urlOfProduct : productUrl,
+                productQuantiity : count,
+            }
+            return {
+                // ...state,
+                // cart: updatedCart
+                cart : [FeaturedProducts]
+            };
+        }else {
+            //if product already does not exist
+            let FeaturedProducts = {
+                id : prodcutName,
+                nameOfProduct : prodcutName,
+                priceOfProduct : productPrice,
+                productMainImage : firstImage,
+                urlOfProduct : productUrl,
+                productQuantiity : count,
+            }
+            console.log("FeaturedProducts" , FeaturedProducts)
+            return {
+                ...state ,
+                cart : [...state.cart , FeaturedProducts]
+            }
+        }
+        // console.log("FeaturedProducts",FeaturedProducts)
+    }
+
+    return state;
+}
+
+export default CartReducer;
+
+In the new coded I have created a new object inside if block becuase whenever I was removing the cart item and
+adding it again by increasing the product quantity I used to get the old product quantity instead of new one
+to overcome this I was reseting the quantity whenever we will click on the remove button but after that I was
+getting empty value becuase i was passing ...state inside return block of if statemnt, so instead of using
+...state I created new object FeaturedProducts which already there in else block and passed it to cart.
+so using this way I don't have to use reset the product quantity in cart.js file.
+
+to check the code I can go to cart.js - removeSingleItem function.
+and to check this above code I can see CartReducer.js file
