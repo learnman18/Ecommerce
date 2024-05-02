@@ -9,10 +9,20 @@ const CartReducer = (state , action) => {
 
         if(existingProductIndex !== -1){
             // Product already exists in the cart
-            // const updatedCart = [...state.cart];
+            // const updatedCart = [...state.cart] ;
+            console.log("inside if block")
+            let FeaturedProducts = {
+                id : prodcutName,
+                nameOfProduct : prodcutName,
+                priceOfProduct : productPrice,
+                productMainImage : firstImage,
+                urlOfProduct : productUrl,
+                productQuantiity : count,
+            }
             return {
-                ...state,
+                // ...state,
                 // cart: updatedCart
+                cart : [FeaturedProducts]
             };
         }else {
             //if product already does not exist
@@ -24,12 +34,19 @@ const CartReducer = (state , action) => {
                 urlOfProduct : productUrl,
                 productQuantiity : count,
             }
+            // console.log("FeaturedProducts" , FeaturedProducts)
             return {
                 ...state ,
                 cart : [...state.cart , FeaturedProducts]
             }
         }
         // console.log("FeaturedProducts",FeaturedProducts)
+    }
+    else if(action.type === "RESET_CART_COUNT"){
+        return {
+            ...state,
+            cart:[]
+        }
     }
 
     return state;

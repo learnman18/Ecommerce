@@ -11,6 +11,7 @@ const HomePageProducts = ({prodcutName , productDescription , firstImage , secon
 
     function CartIncrement() {
         setCount(count + 1);
+        console.log("count home" , count)
     }
 
     function CartDecrement() {

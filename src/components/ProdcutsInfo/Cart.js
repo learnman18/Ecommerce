@@ -4,21 +4,21 @@ import {useCartContext} from "../context/CartContext"
 const Cart = () => {
 
     const [count , setCount] = useState(1);
-    const {cart} = useCartContext();
+    const {cart , ResetCartCount} = useCartContext();
     const [removeCartItem , setRemoveCartItem] = useState(cart)
 
     useEffect(()=>{
         const onPageLoadItemCount = removeCartItem.map((item)=> item.productQuantiity);
         setCount(onPageLoadItemCount);
-    },[])
+        console.log("onPageLoadItemCount" , onPageLoadItemCount)
+        console.log("removeCartItem" , removeCartItem)
+    },[removeCartItem])
 
     function cartIncrement() {
         const x = removeCartItem.map((getProductQunatity)=>{
             return getProductQunatity.productQuantiity += 1;
         })
         setCount(x);
-        console.log("count" , x)
-        console.log("incremnt" , removeCartItem)
     }
 
     function cartDecrement() {
@@ -26,8 +26,15 @@ const Cart = () => {
     }
 
     const removeSingleItem = (itemToDelete) => {
+        
         let deleteItem = cart.filter((item)=> item.id.toLowerCase() !== itemToDelete.toLowerCase())
-        setRemoveCartItem(deleteItem)
+        setRemoveCartItem(deleteItem);
+        // AddToCart(deleteItem);
+        ResetCartCount();
+        setCount(0);
+
+        // let deleteItem = cart.filter((item)=> item.id.toLowerCase() !== itemToDelete.toLowerCase())
+        // setRemoveCartItem(deleteItem);
     }
 
     return(

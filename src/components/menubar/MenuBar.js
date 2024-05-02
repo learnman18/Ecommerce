@@ -2,8 +2,14 @@ import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle"
 import { Link, NavLink } from "react-router-dom";
+import { useCartContext } from "../context/CartContext";
 
 const MenuBar = () => {
+
+    const {cart} = useCartContext();
+    // const [resetCartCount , setResetCartCount] = useState(cart)
+    // const [cartItemCountLength , setCartItemCountLength] = useState(cart)
+
     return(
         <>
             <div>
@@ -29,7 +35,15 @@ const MenuBar = () => {
                                 <li className="nav-item">
                                     <Link to="cart" className="nav-link">
                                         <i className="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}>
-                                            <span style={{fontSize:"9px"}} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">11</span>
+                                            <span style={{fontSize:"9px"}} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                {
+                                                    cart.map((cartItemCount , index)=>{
+                                                        return(
+                                                            <span key={index}>{cartItemCount.productQuantiity}</span>
+                                                        )
+                                                    })
+                                                }
+                                            </span>
                                         </i>
                                         <span>Cart</span>
                                     </Link>

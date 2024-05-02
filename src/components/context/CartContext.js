@@ -12,7 +12,10 @@ const CartProvider = ({children}) => {
     const AddToCart = (prodcutName , productPrice , firstImage , productUrl , count) => {
         dispatch({type : "ADD_TO_CART" , payload : {prodcutName , productPrice, firstImage , productUrl , count}});
     }
-    return <CartContext.Provider value={{...state , AddToCart}}>{children}</CartContext.Provider>
+    const ResetCartCount  = () => {
+        dispatch({ type : "RESET_CART_COUNT"})
+    }
+    return <CartContext.Provider value={{...state , AddToCart , ResetCartCount}}>{children}</CartContext.Provider>
 }
 
 const useCartContext = () => {
