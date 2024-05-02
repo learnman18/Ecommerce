@@ -4,7 +4,7 @@ import {useCartContext} from "../context/CartContext"
 const Cart = () => {
 
     const [count , setCount] = useState(1);
-    const {cart} = useCartContext();
+    const {cart , ResetCartCount} = useCartContext();
     const [removeCartItem , setRemoveCartItem] = useState(cart)
 
     useEffect(()=>{
@@ -26,12 +26,15 @@ const Cart = () => {
     }
 
     const removeSingleItem = (itemToDelete) => {
+        
         let deleteItem = cart.filter((item)=> item.id.toLowerCase() !== itemToDelete.toLowerCase())
         setRemoveCartItem(deleteItem);
+        // AddToCart(deleteItem);
+        ResetCartCount();
+        setCount(0);
 
-        // const resetCount = removeCartItem.map((item)=> item.productQuantiity = "");
-        // setCount(resetCount);
-        // console.log("resetcount" , resetCount)
+        // let deleteItem = cart.filter((item)=> item.id.toLowerCase() !== itemToDelete.toLowerCase())
+        // setRemoveCartItem(deleteItem);
     }
 
     return(

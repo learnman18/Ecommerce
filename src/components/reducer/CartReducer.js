@@ -34,13 +34,19 @@ const CartReducer = (state , action) => {
                 urlOfProduct : productUrl,
                 productQuantiity : count,
             }
-            console.log("FeaturedProducts" , FeaturedProducts)
+            // console.log("FeaturedProducts" , FeaturedProducts)
             return {
                 ...state ,
                 cart : [...state.cart , FeaturedProducts]
             }
         }
         // console.log("FeaturedProducts",FeaturedProducts)
+    }
+    else if(action.type === "RESET_CART_COUNT"){
+        return {
+            ...state,
+            cart:[]
+        }
     }
 
     return state;
