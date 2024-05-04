@@ -116,9 +116,9 @@ const FeaturedItems = () => {
     },[screenWidth])      
 
 
-    const newTabProduct = (prodName) => {
-        window.open(`selectedProdcuts/${prodName}`, "_blank");
-    }
+    // const newTabProduct = (prodName) => {
+    //     window.open(`selectedProdcuts/${prodName}`, "_blank");
+    // }
 
     return(
         <>
@@ -140,14 +140,14 @@ const FeaturedItems = () => {
                                             <a href={curItem.imageName} title="App 1"  className="glightbox preview-link">
                                                 <i className="bi bi-zoom-in"></i>
                                             </a>
-                                            {/* <Link to={`selectedProdcuts/${curItem.productName}`} title="More Details" rel="noreferrer" target="_blank" className="details-link">
+                                            <Link to={`selectedProdcuts/${curItem.productName}`} title="More Details"  className="details-link">
                                                 <i className="bi bi-link-45deg"></i>
-                                            </Link> */}
-                                            <span className="details-link" onClick={()=>{
+                                            </Link>
+                                            {/* <span className="details-link" onClick={()=>{
                                                 newTabProduct(curItem.productName)
                                             }}>
                                                 <i className="bi bi-link-45deg"></i>
-                                            </span>                                            
+                                            </span>                                             */}
                                         </div>
                                     </div>
                                 )  
