@@ -10,14 +10,15 @@ const MenuBar = () => {
     // const [resetCartCount , setResetCartCount] = useState(cart)
     // const [cartItemCountLength , setCartItemCountLength] = useState(cart)
 
+
     return(
         <>
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top" style={{padding:"15px 0"}}>
                     <div className="container-fluid">
                         <a className="navbar-brand" href="/">Navbar</a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">   
+                            <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -31,24 +32,19 @@ const MenuBar = () => {
                                     <NavLink className="nav-link" to="/">Link</NavLink>
                                 </li>
                             </ul>
-                            <ul className="navbar-nav mb-2 mb-lg-0">
-                                <li className="nav-item">
-                                    <Link to="cart" className="nav-link">
-                                        <i className="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}>
-                                            <span style={{fontSize:"9px"}} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                                { 
-                                                    cart.map((cartItemCount , index)=>{
-                                                        return(
-                                                            <span key={index}>{cartItemCount.productQuantiity}</span>
-                                                        )
-                                                    })
-                                                } 
-                                            </span>
-                                        </i>
-                                        <span>Cart</span>
-                                    </Link>
-                                </li>
-                            </ul>
+                            <div className="navbar-brand">
+                                <Link to="cart" className="nav-link">
+                                    <i className="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}>
+                                        <span style={{fontSize:"9px"}} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            {
+                                                cart.length > 0 ? 
+                                                <span>{cart.length}</span> : ""
+                                            }
+                                        </span>
+                                    </i>
+                                    <span>Cart</span>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </nav>

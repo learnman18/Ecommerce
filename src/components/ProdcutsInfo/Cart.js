@@ -4,14 +4,14 @@ import {useCartContext} from "../context/CartContext"
 const Cart = () => {
 
     const [count , setCount] = useState(1);
-    const {cart , ResetCartCount , RemoveFromCart} = useCartContext();
+    const {cart , ResetCartCount} = useCartContext();
     const [removeCartItem , setRemoveCartItem] = useState(cart);
     // const [LSCart , setLSCart] = useState([]);
 
 
     useEffect(()=>{
         console.log("Cart component mounted");
-        console.log("Initial cart state:", cart);
+        // console.log("Initial cart state:", cart);
         const storedToken = JSON.parse(localStorage.getItem("cartLocalStore"));
         console.log("Cart loaded from localStorage:", storedToken);
         if(storedToken){
