@@ -48,6 +48,12 @@ const CartReducer = (state , action) => {
             cart:[]
         }
     }
+    // else if(action.type === "REMOVE_FROM_CART"){
+    //     return{
+    //         ...state,
+    //         cart : action.payload
+    //     }
+    // }
 
     return state;
 }

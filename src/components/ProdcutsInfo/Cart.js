@@ -4,14 +4,37 @@ import {useCartContext} from "../context/CartContext"
 const Cart = () => {
 
     const [count , setCount] = useState(1);
-    const {cart , ResetCartCount} = useCartContext();
-    const [removeCartItem , setRemoveCartItem] = useState(cart)
+    const {cart , ResetCartCount , RemoveFromCart} = useCartContext();
+    const [removeCartItem , setRemoveCartItem] = useState(cart);
+    // const [LSCart , setLSCart] = useState([]);
+
+
+    useEffect(()=>{
+        console.log("Cart component mounted");
+        console.log("Initial cart state:", cart);
+        const storedToken = JSON.parse(localStorage.getItem("cartLocalStore"));
+        console.log("Cart loaded from localStorage:", storedToken);
+        if(storedToken){
+            setRemoveCartItem(storedToken);
+        }
+    },[])
+
+    useEffect(()=>{
+        console.log("Cart state changed:", removeCartItem);
+        // localStorage.setItem("cartLocalStore" , JSON.stringify(removeCartItem))
+        if(removeCartItem.length > 0){
+            localStorage.setItem("cartLocalStore" , JSON.stringify(removeCartItem))
+        }else if(removeCartItem.length === 0){
+            localStorage.removeItem('cartLocalStore');
+        }
+    },[removeCartItem])
+
 
     useEffect(()=>{
         const onPageLoadItemCount = removeCartItem.map((item)=> item.productQuantiity);
         setCount(onPageLoadItemCount);
-        console.log("onPageLoadItemCount" , onPageLoadItemCount)
-        console.log("removeCartItem" , removeCartItem)
+        // console.log("onPageLoadItemCount" , onPageLoadItemCount)
+        // console.log("removeCartItem" , removeCartItem)
     },[removeCartItem])
 
     function cartIncrement() {
@@ -27,12 +50,15 @@ const Cart = () => {
 
     const removeSingleItem = (itemToDelete) => {
         
-        let deleteItem = cart.filter((item)=> item.id.toLowerCase() !== itemToDelete.toLowerCase())
+        let deleteItem = cart.filter((item)=> item.id.toLowerCase() !== itemToDelete.toLowerCase());
+        console.log("deleteItem" , deleteItem)
         setRemoveCartItem(deleteItem);
         // AddToCart(deleteItem);
         ResetCartCount();
         setCount(0);
+        // RemoveFromCart(deleteItem)
 
+        // RemoveFromCart(deleteItem)
         // let deleteItem = cart.filter((item)=> item.id.toLowerCase() !== itemToDelete.toLowerCase())
         // setRemoveCartItem(deleteItem);
     }

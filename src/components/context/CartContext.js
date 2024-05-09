@@ -15,7 +15,11 @@ const CartProvider = ({children}) => {
     const ResetCartCount  = () => {
         dispatch({ type : "RESET_CART_COUNT"})
     }
-    return <CartContext.Provider value={{...state , AddToCart , ResetCartCount}}>{children}</CartContext.Provider>
+    // const RemoveFromCart = (deleteItem) => {
+    //     dispatch({type : "REMOVE_FROM_CART" , payload : {deleteItem}} )
+    // }
+
+    return <CartContext.Provider value={{...state , AddToCart , ResetCartCount }}>{children}</CartContext.Provider>
 }
 
 const useCartContext = () => {
