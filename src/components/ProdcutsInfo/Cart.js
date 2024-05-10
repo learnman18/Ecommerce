@@ -10,7 +10,7 @@ const Cart = () => {
 
 
     useEffect(()=>{
-        console.log("Cart component mounted");
+        // console.log("Cart component mounted" , cart);
         // console.log("Initial cart state:", cart);
         const storedToken = JSON.parse(localStorage.getItem("cartLocalStore"));
         console.log("Cart loaded from localStorage:", storedToken);
@@ -20,7 +20,7 @@ const Cart = () => {
     },[])
 
     useEffect(()=>{
-        console.log("Cart state changed:", removeCartItem);
+        // console.log("Cart state changed:", removeCartItem);
         // localStorage.setItem("cartLocalStore" , JSON.stringify(removeCartItem))
         if(removeCartItem.length > 0){
             localStorage.setItem("cartLocalStore" , JSON.stringify(removeCartItem))
@@ -54,13 +54,9 @@ const Cart = () => {
         console.log("deleteItem" , deleteItem)
         setRemoveCartItem(deleteItem);
         // AddToCart(deleteItem);
-        ResetCartCount();
+        ResetCartCount(deleteItem);
         setCount(0);
         // RemoveFromCart(deleteItem)
-
-        // RemoveFromCart(deleteItem)
-        // let deleteItem = cart.filter((item)=> item.id.toLowerCase() !== itemToDelete.toLowerCase())
-        // setRemoveCartItem(deleteItem);
     }
 
     return(

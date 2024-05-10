@@ -17,7 +17,7 @@ const FeaturedItems = () => {
         height:"1079.31px"
     }
 
-    console.log("FeaturedProducts" , FeaturedProducts)
+    // console.log("FeaturedProducts" , FeaturedProducts)
 
     useEffect(() => {
         const handleResize = () => {

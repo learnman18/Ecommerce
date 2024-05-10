@@ -12,8 +12,8 @@ const CartProvider = ({children}) => {
     const AddToCart = (prodcutName , productPrice , firstImage , productUrl , count) => {
         dispatch({type : "ADD_TO_CART" , payload : {prodcutName , productPrice, firstImage , productUrl , count}});
     }
-    const ResetCartCount  = () => {
-        dispatch({ type : "RESET_CART_COUNT"})
+    const ResetCartCount  = (deleteItem) => {
+        dispatch({ type : "RESET_CART_COUNT" , payload: deleteItem})
     }
     // const RemoveFromCart = (deleteItem) => {
     //     dispatch({type : "REMOVE_FROM_CART" , payload : {deleteItem}} )
