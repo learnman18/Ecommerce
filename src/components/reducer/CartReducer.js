@@ -43,9 +43,10 @@ const CartReducer = (state , action) => {
         // console.log("FeaturedProducts",FeaturedProducts)
     }
     else if(action.type === "RESET_CART_COUNT"){
+        console.log("state" , state);
         return {
             ...state,
-            cart:[]
+            cart : action.payload
         }
     }
     // else if(action.type === "REMOVE_FROM_CART"){
