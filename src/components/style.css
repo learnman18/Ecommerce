@@ -54,6 +54,9 @@
     border-radius: 4px;
 }
 
+body{
+    background-color: #f1f3f6;
+}
 
 /* Portfolio Section - Home Page
 ------------------------------*/
@@ -193,4 +196,28 @@ bottom: 0;
     border-radius: 2px;
     margin: 0 5px;
     text-align: center;
+}
+
+/* CART.js */
+
+.cart-items{
+    margin-bottom: 10px;
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,.2);
+    background: white;
+}
+.nameAndDeliverDate{
+    display: flex;
+    align-items: baseline;
+    gap: 50px;
+}
+
+.productName {
+    color: #212121;
+    line-height: 1;
+}
+
+.price{
+    font-size: 18px;
+    font-weight: 500;
+    color: #212121;
 }
