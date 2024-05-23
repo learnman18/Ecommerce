@@ -9,14 +9,22 @@ const HomePageProducts = ({prodcutName , productDescription , firstImage , secon
     const {AddToCart} = useCartContext() //custom hook created
     const productUrl = window.location.pathname;
 
-    function CartIncrement() {
-        setCount(count + 1);
-        console.log("count home" , count)
-    }
+    // function CartIncrement() {
+    //     setCount(count + 1);
+    //     console.log("count home" , count)
+    // }
 
-    function CartDecrement() {
-        count > 1 && setCount(count - 1);
-    }
+    // function CartDecrement() {
+    //     count > 1 && setCount(count - 1);
+    // }
+
+    const CartIncrement = () => {
+        setCount((prevCount) => prevCount + 1);
+      };
+    
+      const CartDecrement = () => {
+        setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : prevCount));
+      };
 
     const displayTheMainImg = (event) => {
         let mainImg = document.querySelector(".biggerImage img");
