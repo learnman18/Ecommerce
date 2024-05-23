@@ -19,6 +19,8 @@ const CartReducer = (state , action) => {
                 urlOfProduct : productUrl,
                 productQuantiity : count,
             }
+
+
             return {
                 // ...state,
                 // cart: updatedCart
@@ -35,6 +37,7 @@ const CartReducer = (state , action) => {
                 productQuantiity : count,
             }
             // console.log("FeaturedProducts" , FeaturedProducts)
+      
             return {
                 ...state ,
                 cart : [...state.cart , FeaturedProducts]
@@ -49,7 +52,7 @@ const CartReducer = (state , action) => {
             cart : action.payload
         }
     }
-    // else if(action.type === "REMOVE_FROM_CART"){
+    // else if(action.type === "CART_COUNT_UPDATE"){
     //     return{
     //         ...state,
     //         cart : action.payload
