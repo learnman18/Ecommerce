@@ -19,8 +19,6 @@ const CartReducer = (state , action) => {
                 urlOfProduct : productUrl,
                 productQuantiity : count,
             }
-
-
             return {
                 // ...state,
                 // cart: updatedCart

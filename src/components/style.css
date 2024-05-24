@@ -200,7 +200,7 @@ bottom: 0;
 
 /* CART.js */
 
-.cart-items{
+.cart-items , .itemPaymentDetail{
     margin-bottom: 10px;
     box-shadow: 0 0px 0px 0 rgba(0,0,0,.2);
     background: white;
@@ -220,4 +220,16 @@ bottom: 0;
     font-size: 18px;
     font-weight: 500;
     color: #212121;
+}
+
+/* HomePageCartPayment */
+
+.priceDetails {
+    border-bottom: 1px solid #f0f0f0;
+    text-transform: uppercase;
+    padding: 13px 24px;
+    font-weight: 500;
+    min-height: 47px;
+    border-radius: 2px 2px 0 0;
+    color: #878787;
 }

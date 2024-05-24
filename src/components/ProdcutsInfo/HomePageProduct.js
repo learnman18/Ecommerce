@@ -4,27 +4,18 @@ import CartToast from "../Toast";
 
 const HomePageProducts = ({prodcutName , productDescription , firstImage , secondImage , thirdImage , mainImage , productID , productPrice}) => {
 
-    const [count , setCount] = useState(1);
     const [alertForCartItem , setAlertForCartItem] = useState("hide")
-    const {AddToCart} = useCartContext() //custom hook created
+    const {AddToCart } = useCartContext() //custom hook created
+    const [count , setCount] = useState(1);
     const productUrl = window.location.pathname;
 
-    // function CartIncrement() {
-    //     setCount(count + 1);
-    //     console.log("count home" , count)
-    // }
-
-    // function CartDecrement() {
-    //     count > 1 && setCount(count - 1);
-    // }
-
     const CartIncrement = () => {
-        setCount((prevCount) => prevCount + 1);
+        setCount((prevCount) => Number(prevCount) + Number(1));
       };
     
-      const CartDecrement = () => {
-        setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : prevCount));
-      };
+    const CartDecrement = () => {
+        setCount((prevCount) => (prevCount > 1 ? Number(prevCount) - Number(1) : prevCount));
+    };
 
     const displayTheMainImg = (event) => {
         let mainImg = document.querySelector(".biggerImage img");
@@ -61,13 +52,6 @@ return(
                 </div>
                 <div className="col-12 col-sm-12 col-md-6">
                     <div className="">
-
-                        {/* {
-                            cartItems.map((item , index)=>{
-                                return <p key={index}>{item.prodcutName} and {item.productPrice}</p>
-                            })
-                        } */}
-
                         <h3>{prodcutName}</h3>
                         <p>{productDescription}</p>
                         <p>Brand : Apple</p>
@@ -78,7 +62,7 @@ return(
                             <button className="cartCounter" onClick={CartIncrement}>+</button>
                         </div>
                         <button className="btn btn-warning" onClick={()=> {
-                            AddToCart(prodcutName , productPrice, firstImage, productUrl , count );
+                            AddToCart(prodcutName , productPrice, firstImage, productUrl, count);
                             AlertMsg();
                         }}>Add to cart</button>
                     </div>
