@@ -48,7 +48,7 @@ const Cart = () => {
     };
 
     const removeSingleItem = (itemToDelete) => {
-        const deleteItem = cart.filter((item) => item.id.toLowerCase() !== itemToDelete.toLowerCase());
+        const deleteItem = removeCartItem.filter((item) => item.id.toLowerCase() !== itemToDelete.toLowerCase());
         console.log("deleteItem" , deleteItem)
         setRemoveCartItem(deleteItem);
         ResetCartCount(deleteItem);
