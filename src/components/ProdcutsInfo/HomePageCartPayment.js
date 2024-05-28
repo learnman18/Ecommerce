@@ -1,7 +1,10 @@
 import React from "react";
 
 
-export default function HomePageCartPayment() {
+export default function HomePageCartPayment(props) {
+
+    console.log(props.allCartItem[0].id)
+    
     return(
         <>
             <div>
@@ -9,17 +12,19 @@ export default function HomePageCartPayment() {
                     <div className="itemPaymentDetail">
                         <div className="allPriceInfo">
                             <div className="priceDetails">Price Details</div>
-                            <div>
-                                <div>Price (1 Item)</div>
-                                <div>&#8377;2000</div>
-                            </div>
-                            <div>
-                                <div>Discount</div>
-                                <div>&#8377;</div>
-                            </div>
-                            <div>
-                                <div>Delivery charge</div>
-                                <div>&#8377;80</div>
+                            <div style={{padding:"0 24px"}}>
+                                <div className="priceOptions">
+                                    <div>Price (1 Item)</div>
+                                    <div>&#8377;2000</div>
+                                </div>
+                                <div className="priceOptions">
+                                    <div>Discount</div>
+                                    <div>&#8377;</div>
+                                </div>
+                                <div className="LastPriceOptions">
+                                    <div>Delivery charge</div>
+                                    <div>&#8377;80</div>
+                                </div>
                             </div>
                         </div>
                     </div>

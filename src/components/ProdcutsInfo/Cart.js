@@ -65,7 +65,7 @@ const Cart = () => {
 
     return (
         <>
-            <div style={{marginTop: 80, display:"flex"}}>
+            <div className="cartParent" style={{marginTop: 80, display:"flex"}}>
                 <div className="col-md-8">
                     <div className="card" style={{border: "none", background: "transparent" }}>
                         {removeCartItem.length > 0 ? (
@@ -89,7 +89,7 @@ const Cart = () => {
                                                         </div>
                                                         <div>
                                                             <div className="price">
-                                                                {cartItem.priceOfProduct}
+                                                                {cartItem.priceOfProduct * cartItem.productQuantiity}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -125,7 +125,7 @@ const Cart = () => {
                 {
                     removeCartItem.length >= 1 ? 
                         <div className="col-md-4">
-                            <HomePageCartPayment></HomePageCartPayment>
+                            <HomePageCartPayment allCartItem={removeCartItem}></HomePageCartPayment>
                         </div>
                     :
                     ""
