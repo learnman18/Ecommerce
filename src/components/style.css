@@ -25,6 +25,12 @@
     }
 }
 
+@media (max-width: 768px){
+    .cartParent {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 .features-item .image-stack {
     display: grid;
@@ -233,3 +239,17 @@ bottom: 0;
     border-radius: 2px 2px 0 0;
     color: #878787;
 }
+
+.priceOptions{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.LastPriceOptions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 13px 0;
+}
+

@@ -4,6 +4,7 @@ import coverImg from "../Images/features-light-2.jpg"
 import "../style.css"
 import FeaturedItems from "./FeaturedServices";
 import Footer from "../Footer/Footer";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
 
@@ -16,7 +17,7 @@ const LandingPage = () => {
                     Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
                     velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
                     </p>
-                    <a href="/" className="btn btn-get-started">Get Started</a>
+                    <Link to="/products" className="btn btn-get-started">Get Started</Link>
                 </div>
                 <div className="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
                     <div className="image-stack">
