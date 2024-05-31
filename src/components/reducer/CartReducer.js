@@ -14,10 +14,11 @@ const CartReducer = (state , action) => {
             let FeaturedProducts = {
                 id : prodcutName,
                 nameOfProduct : prodcutName,
-                priceOfProduct : productPrice,
+                priceOfProduct : Number(productPrice),
                 productMainImage : firstImage,
                 urlOfProduct : productUrl,
                 productQuantiity : count,
+                totalPriceSignleProd : Number(productPrice) * Number(count)
             }
             return {
                 // ...state,
@@ -29,10 +30,11 @@ const CartReducer = (state , action) => {
             let FeaturedProducts = {
                 id : prodcutName,
                 nameOfProduct : prodcutName,
-                priceOfProduct : productPrice,
+                priceOfProduct : Number(productPrice),
                 productMainImage : firstImage,
                 urlOfProduct : productUrl,
                 productQuantiity : count,
+                totalPriceSignleProd : Number(productPrice)
             }
             // console.log("FeaturedProducts" , FeaturedProducts)
       

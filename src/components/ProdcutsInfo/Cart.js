@@ -6,6 +6,8 @@ const Cart = () => {
     const { cart, ResetCartCount } = useCartContext();
     const [removeCartItem, setRemoveCartItem] = useState(cart);
 
+    removeCartItem.map((item)=>console.log("totalPriceSignleProd", item.totalPriceSignleProd))
+
     useEffect(() => {
         // console.log("Cart component mounted" , cart);
         // console.log("Initial cart state:", cart);
@@ -25,10 +27,9 @@ const Cart = () => {
     }, [removeCartItem]);
 
     const cartIncrement = (productID) => {
-
         const updatedCart = removeCartItem.map((item) => {
             if (item.id === productID) {
-                return { ...item, productQuantiity: item.productQuantiity + 1 };
+                return { ...item, productQuantiity: item.productQuantiity + 1, totalPriceSignleProd: (item.productQuantiity + 1)  * item.priceOfProduct};
             }
             return item;
         });
@@ -40,7 +41,7 @@ const Cart = () => {
 
         const updatedCart = removeCartItem.map((item) => {
             if (item.id === productID && item.productQuantiity > 1) {
-                return { ...item, productQuantiity: item.productQuantiity - 1 };
+                return { ...item, productQuantiity: item.productQuantiity - 1, totalPriceSignleProd: item.totalPriceSignleProd - item.priceOfProduct};
             }
             return item;
         });
@@ -89,7 +90,9 @@ const Cart = () => {
                                                         </div>
                                                         <div>
                                                             <div className="price">
-                                                                {cartItem.priceOfProduct * cartItem.productQuantiity}
+                                                                {/* {cartItem.priceOfProduct * cartItem.productQuantiity} */}
+                                                                {/* {cartItem.productQuantiity === 1 ? cartItem.priceOfProduct : cartItem.totalPriceSignleProd} */}
+                                                                {cartItem.totalPriceSignleProd}
                                                             </div>
                                                         </div>
                                                     </div>
