@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
 export default function HomePageCartPayment(props) {
 
     // console.log(props.allCartItem.length)
+    const [paymentPrice , setPaymentPrice] = useState([])
+
+    useEffect(()=>{
+        console.log("paymentPrice" , paymentPrice);
+        const updatePaymentPrice = props.allCartItem.map((item)=>{
+            return item.totalPriceSignleProd;
+        })
+        console.log("updatePaymentPrice" , updatePaymentPrice);
+        const x = updatePaymentPrice.reduce((a,b)=> a + b ,0)
+        console.log("x" , x);
+        setPaymentPrice(x)
+    },[props.allCartItem , paymentPrice])
     
     return(
         <>
@@ -14,10 +26,9 @@ export default function HomePageCartPayment(props) {
                             <div className="priceDetails">Price Details</div>
                             <div style={{padding:"0 24px"}}>
                                 <div className="priceOptions">
-                                    <div>Price ({props.allCartItem.length} Item)</div>
-                                    <div>&#8377;2000</div>
-                                    {/* <div>{props.allCartItem.map((item)=><span>{item.priceOfProduct += item.priceOfProduct}</span>)}</div> */}
-
+                                    <div>Price ({props.allCartItem.length > 1 ? props.allCartItem.length + " Items" : props.allCartItem.length + " Item"})</div>
+                                    {/* <div>Price ({`${props.allCartItem.length > 1 ? props.allCartItem.length + "Items" : props.allCartItem.length + "Item"}`})</div> */}
+                                    <div>&#8377; {paymentPrice}</div>
                                 </div>
                                 <div className="priceOptions">
                                     <div>Discount</div>
@@ -25,8 +36,7 @@ export default function HomePageCartPayment(props) {
                                 </div>
                                 <div className="LastPriceOptions">
                                     <div>Delivery charge</div>
-                                    {/* <div>{props.allCartItem.map((item)=> <span key={item.id + 1}>{item.priceOfProduct > 500 ? <span>Free</span> : <span>&#8377;80</span>}</span>)} </div> */}
-                                    <div>&#8377;80</div>
+                                    <div>{paymentPrice > 500 ? "Free" : <span>&#8377;80</span>}</div>
                                 </div>
                             </div>
                         </div>

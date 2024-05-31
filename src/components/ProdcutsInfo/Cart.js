@@ -90,7 +90,6 @@ const Cart = () => {
                                                         </div>
                                                         <div>
                                                             <div className="price">
-                                                                {/* {cartItem.priceOfProduct * cartItem.productQuantiity} */}
                                                                 {/* {cartItem.productQuantiity === 1 ? cartItem.priceOfProduct : cartItem.totalPriceSignleProd} */}
                                                                 {cartItem.totalPriceSignleProd}
                                                             </div>
