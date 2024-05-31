@@ -3,7 +3,7 @@ import React from "react";
 
 export default function HomePageCartPayment(props) {
 
-    console.log(props.allCartItem[0].id)
+    // console.log(props.allCartItem.length)
     
     return(
         <>
@@ -14,8 +14,10 @@ export default function HomePageCartPayment(props) {
                             <div className="priceDetails">Price Details</div>
                             <div style={{padding:"0 24px"}}>
                                 <div className="priceOptions">
-                                    <div>Price (1 Item)</div>
+                                    <div>Price ({props.allCartItem.length} Item)</div>
                                     <div>&#8377;2000</div>
+                                    {/* <div>{props.allCartItem.map((item)=><span>{item.priceOfProduct += item.priceOfProduct}</span>)}</div> */}
+
                                 </div>
                                 <div className="priceOptions">
                                     <div>Discount</div>
@@ -23,6 +25,7 @@ export default function HomePageCartPayment(props) {
                                 </div>
                                 <div className="LastPriceOptions">
                                     <div>Delivery charge</div>
+                                    {/* <div>{props.allCartItem.map((item)=> <span key={item.id + 1}>{item.priceOfProduct > 500 ? <span>Free</span> : <span>&#8377;80</span>}</span>)} </div> */}
                                     <div>&#8377;80</div>
                                 </div>
                             </div>
