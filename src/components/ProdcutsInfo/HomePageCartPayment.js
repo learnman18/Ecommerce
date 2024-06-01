@@ -12,9 +12,9 @@ export default function HomePageCartPayment(props) {
             return item.totalPriceSignleProd;
         })
         console.log("updatePaymentPrice" , updatePaymentPrice);
-        const x = updatePaymentPrice.reduce((a,b)=> a + b ,0)
-        console.log("x" , x);
-        setPaymentPrice(x)
+        const sumOfCartProducts = updatePaymentPrice.reduce((a,b)=> a + b ,0)
+        console.log("x" , sumOfCartProducts);
+        setPaymentPrice(sumOfCartProducts)
     },[props.allCartItem , paymentPrice])
     
     return(
@@ -34,9 +34,19 @@ export default function HomePageCartPayment(props) {
                                     <div>Discount</div>
                                     <div>&#8377;</div>
                                 </div>
-                                <div className="LastPriceOptions">
-                                    <div>Delivery charge</div>
+                                <div className="deliveryCharge">
+                                    <div>Delivery charge
+                                    {
+                                        paymentPrice > 500 ? 
+                                        <p style={{fontSize:11,color:"#388e3c",fontWeight:500}}>Free delivery applied</p> :
+                                        <p style={{fontSize:11}}>Order above 500 to get free delivery</p>
+                                    }
+                                    </div>
                                     <div>{paymentPrice > 500 ? "Free" : <span>&#8377;80</span>}</div>
+                                </div>
+                                <div className="LastPriceOptions">
+                                    <div>Total Amount</div>
+                                    <div>{paymentPrice > 500 ? paymentPrice : paymentPrice + 80}</div>
                                 </div>
                             </div>
                         </div>
