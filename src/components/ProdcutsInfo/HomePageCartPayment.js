@@ -7,13 +7,13 @@ export default function HomePageCartPayment(props) {
     const [paymentPrice , setPaymentPrice] = useState([])
 
     useEffect(()=>{
-        console.log("paymentPrice" , paymentPrice);
+        // console.log("paymentPrice" , paymentPrice);
         const updatePaymentPrice = props.allCartItem.map((item)=>{
             return item.totalPriceSignleProd;
         })
-        console.log("updatePaymentPrice" , updatePaymentPrice);
+        // console.log("updatePaymentPrice" , updatePaymentPrice);
         const sumOfCartProducts = updatePaymentPrice.reduce((a,b)=> a + b ,0)
-        console.log("x" , sumOfCartProducts);
+        // console.log("x" , sumOfCartProducts);
         setPaymentPrice(sumOfCartProducts)
     },[props.allCartItem , paymentPrice])
     
