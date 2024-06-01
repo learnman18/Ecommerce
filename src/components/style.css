@@ -34,6 +34,9 @@
         flex-direction: column;
         gap: 0 !important;
     }
+    .productPage{
+        flex-direction: column;
+    }
 }
 
 .features-item .image-stack {

@@ -9,7 +9,7 @@ const MenuBar = () => {
     const {cart} = useCartContext();
 
     const handleNavItemClick = () => {
-        console.log(isNavItemVisible)
+        // console.log(isNavItemVisible)
         isNavItemVisible ? setNavItemVisibility(false) : setNavItemVisibility(true)
     };
 
