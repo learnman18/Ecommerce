@@ -9,15 +9,19 @@ export default function FilterDesktop (props) {
     });
     }
 
+    const SearchProduct = (event) => {
+        console.log("event" , event);
+    }
+
     return(
         <>
             <div>
                 <div>
-                    <input type="text" placeholder="search"/>
+                    <input type="text" placeholder="search" onChange={(event)=>SearchProduct(event.target.value)}/>
                 </div>
                 <div>
                     <p>Category</p>
-                    <ul>
+                    <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
                     {[...categories].map((category) => (
                         <li key={category}>{category}</li>
                     ))}

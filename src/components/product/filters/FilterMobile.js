@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function FilterMobile (){
+export default function FilterMobile (props){
+
+    const categories = new Set();
+    if(props.allProductData){
+        props.allProductData.map((item)=> categories.add(item.category))
+    }
+
     return(
         <>
             <div className="accordion" id="accordionExample">
@@ -17,12 +23,12 @@ export default function FilterMobile (){
                             </div>
                             <div>
                                 <p>Category</p>
-                                <ul>
-                                    <li>Mobile</li>
-                                    <li>Computer</li>
-                                    <li>Computer</li>
-                                    <li>Computer</li>
-                                    <li>Computer</li>
+                                <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
+                                    {
+                                        [...categories].map((category)=>(
+                                            <li>{category}</li>
+                                        ))
+                                    }
                                 </ul>
                             </div>
                             <div>
