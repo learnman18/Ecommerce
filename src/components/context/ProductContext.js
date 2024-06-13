@@ -9,12 +9,12 @@ const initialState = {
 
 const ProductProvider = ({children}) => {
     const [state , dispatch] = useReducer(reducer  , initialState);
-    const allProductItems = (id,name,price,company) => {
+    const AddCartItem = (id,name,price,company) => {
         console.log("item" , name);
         dispatch({type:"ALL_ITEMS" , payload : {id,name,price,company}})
     }
 
-    return <ProductContext.Provider value={{...state , allProductItems}}>{children}</ProductContext.Provider>
+    return <ProductContext.Provider value={{...state , AddCartItem}}>{children}</ProductContext.Provider>
 }
 
 const useProductContext = () => {
