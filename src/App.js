@@ -6,6 +6,7 @@ import LandingPage from './components/HomePage/LandingPage';
 import ProductSpecification from './components/ProdcutsInfo/ProductDetails';
 import Cart from './components/ProdcutsInfo/Cart';
 import AllProducts from './components/product/AllProducts';
+import SingleProduct from './components/product/SingleProduct';
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
             </div>
           }>
         </Route>
-        <Route path='products' element={<AllProducts></AllProducts>}></Route>
+        <Route path='products' element={<AllProducts></AllProducts>}>
+        </Route>
+        <Route path='AllProdcuts/:singleProd' element={<SingleProduct></SingleProduct>}></Route>
+
         <Route path='selectedProdcuts/:productName' element={<ProductSpecification></ProductSpecification>}></Route>
         <Route path='cart' element={<Cart></Cart>}></Route>
       </Routes>

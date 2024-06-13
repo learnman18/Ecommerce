@@ -25,8 +25,8 @@ export default function FilterMobile (props){
                                 <p>Category</p>
                                 <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
                                     {
-                                        [...categories].map((category)=>(
-                                            <li>{category}</li>
+                                        [...categories].map((category , index)=>(
+                                            <li key={index}>{category}</li>
                                         ))
                                     }
                                 </ul>

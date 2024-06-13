@@ -4,12 +4,14 @@ import FilterMobile from "./filters/FilterMobile";
 import axios from "axios";
 import Spinner from "../pageLoader/Spinner";
 import { Link } from "react-router-dom";
+import {useProductContext} from "../context/ProductContext"
 
 
 const AllProducts = () => {
 
     const [allCartProducts , setAllCartProducts] = useState();
     const [pageLoader , setPageLoader] = useState(false);
+    const {allProductItems} = useProductContext() //calling a function using created custom hook.
     
     useEffect(()=>{
         setPageLoader(true)
@@ -52,7 +54,9 @@ const AllProducts = () => {
                                 allCartProducts.map((item)=>
                                 (
                                     <div className="col-md-4" key={item.id}>
-                                        <Link>
+                                        <Link to={`/AllProdcuts/${item.name}`} onClick={()=>{
+                                            allProductItems(item.id, item.name, item.price, item.company)
+                                            }}>
                                             <div className="card">
                                                 <img src={item.image} className="card-img-top" alt="..." />
                                                 <div className="card-body">
