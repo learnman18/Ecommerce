@@ -4,14 +4,11 @@ import FilterMobile from "./filters/FilterMobile";
 import axios from "axios";
 import Spinner from "../pageLoader/Spinner";
 import { Link } from "react-router-dom";
-// import {useProductContext} from "../context/ProductContext"
-
 
 const AllProducts = () => {
 
     const [allCartProducts , setAllCartProducts] = useState();
     const [pageLoader , setPageLoader] = useState(false);
-    // const {allProductItems} = useProductContext() //calling a function using created custom hook.
     
     useEffect(()=>{
         setPageLoader(true)

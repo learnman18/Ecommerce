@@ -8,10 +8,11 @@ const SingleProduct = () => {
     const [product , setProduct] = useState();
     const [itemCount , setItemCount] = useState(1);
     const {AddCartItem} = useProductContext();
-    
+
     const {singleProd} = useParams();
     // console.log("ProductCart" , ProductCart)
     let decodeTheURL = decodeURIComponent(singleProd);
+    const productUrl = window.location.pathname;
 
     useEffect(()=>{
         axios.get(`https://api.pujakaitem.com/api/products`)
@@ -65,7 +66,7 @@ const SingleProduct = () => {
                                             <button className="cartCounter" onClick={productCartIncrement}>+</button>
                                         </div>
                                         <button className="btn btn-warning" onClick={()=> {
-                                            AddCartItem(item.id, item.name , item.price, item.company , item.image, itemCount);
+                                            AddCartItem(item.id, item.name, item.price, item.company, item.image, productUrl, itemCount);
                                         }}>Add to cart</button>
                                     </div>
                                 </div>

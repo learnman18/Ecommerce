@@ -9,12 +9,15 @@ const initialState = {
 
 const ProductProvider = ({children}) => {
     const [state , dispatch] = useReducer(reducer  , initialState);
-    const AddCartItem = (id,name,price,company) => {
+    const AddCartItem = (id, name, price, company, image, productUrl, itemCount) => {
         console.log("item" , name);
-        dispatch({type:"ALL_ITEMS" , payload : {id,name,price,company}})
+        dispatch({type:"ALL_ITEMS" , payload : {id, name, price, company, image, productUrl, itemCount}})
     }
 
-    return <ProductContext.Provider value={{...state , AddCartItem}}>{children}</ProductContext.Provider>
+    const ResetCartCount  = (deleteItem) => {
+        dispatch({ type : "RESET_PPRODUCT_CART_COUNT" , payload: deleteItem})
+    }
+    return <ProductContext.Provider value={{...state , AddCartItem, ResetCartCount}}>{children}</ProductContext.Provider>
 }
 
 const useProductContext = () => {

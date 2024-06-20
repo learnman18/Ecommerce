@@ -1,68 +1,67 @@
 import React, { useEffect, useState } from "react";
-import { useCartContext } from "../context/CartContext";
-import HomePageCartPayment from "./HomePageCartPayment";
+import { useProductContext } from "../context/ProductContext";
 
-const Cart = () => {
-    const { cart, ResetCartCount } = useCartContext();
-    const [removeCartItem, setRemoveCartItem] = useState(cart);
+const ProductInsideCart = () => {
+    const { ProductCart , ResetCartCount } = useProductContext();
+    const [removeProductCart, setRemoveProductCart] = useState(ProductCart);
+    console.log("ProductCart" ,ProductCart)
+    console.log("removeProductCart" ,removeProductCart)
 
-    // removeCartItem.map((item)=>console.log("totalPriceSignleProd", item.totalPriceSignleProd));
-    // console.log("cart" , cart);
-    // console.log("removeCartItem" , removeCartItem)
+    removeProductCart.map((item)=>console.log("totalPriceOfSingleProduct", item.totalPriceOfSingleProduct))
 
     useEffect(() => {
-        // console.log("Cart component mounted" , cart);
-        // console.log("Initial cart state:", cart);
-        const storedToken = JSON.parse(localStorage.getItem("cartLocalStore"));
+        // console.log("Cart component mounted" , ProductCart);
+        // console.log("Initial cart state:", ProductCart);
+        const storedToken = JSON.parse(localStorage.getItem("productCartLocalStore"));
         console.log("Cart loaded from localStorage:", storedToken);
         if (storedToken) {
-            setRemoveCartItem(storedToken);
+            setRemoveProductCart(storedToken);
         }
     }, []);
 
     useEffect(() => {
-        if (removeCartItem.length > 0) {
-            localStorage.setItem("cartLocalStore", JSON.stringify(removeCartItem));
-        } else if (removeCartItem.length === 0) {
-            localStorage.removeItem('cartLocalStore');
+        if (removeProductCart.length > 0) {
+            localStorage.setItem("productCartLocalStore", JSON.stringify(removeProductCart));
+        } else if (removeProductCart.length === 0) {
+            localStorage.removeItem('productCartLocalStore');
         }
-    }, [removeCartItem]);
+    }, [removeProductCart]);
 
-    const cartIncrement = (productID) => {
-        const updatedCart = removeCartItem.map((item) => {
+    const productCartIncrement = (productID) => {
+        const updatedCart = removeProductCart.map((item) => {
             if (item.id === productID) {
-                return { ...item, productQuantiity: item.productQuantiity + 1, totalPriceSignleProd: (item.productQuantiity + 1)  * item.priceOfProduct};
+                return { ...item, singleProductQuantity: item.singleProductQuantity + 1, totalPriceOfSingleProduct: (item.singleProductQuantity + 1)  * item.priceOfProduct};
             }
             return item;
         });
         console.log("updatedCart updated:", updatedCart);
-        setRemoveCartItem(updatedCart);
+        setRemoveProductCart(updatedCart);
     };
 
-    const cartDecrement = (productID) => {
+    const productCartDecrement = (productID) => {
 
-        const updatedCart = removeCartItem.map((item) => {
-            if (item.id === productID && item.productQuantiity > 1) {
-                return { ...item, productQuantiity: item.productQuantiity - 1, totalPriceSignleProd: item.totalPriceSignleProd - item.priceOfProduct};
+        const updatedCart = removeProductCart.map((item) => {
+            if (item.id === productID && item.singleProductQuantity > 1) {
+                return { ...item, singleProductQuantity: item.singleProductQuantity - 1, totalPriceOfSingleProduct: item.totalPriceOfSingleProduct - item.priceOfProduct};
             }
             return item;
         });
-        setRemoveCartItem(updatedCart);
+        setRemoveProductCart(updatedCart);
     };
 
     const removeSingleItem = (itemToDelete) => {
-        const deleteItem = removeCartItem.filter((item) => item.id.toLowerCase() !== itemToDelete.toLowerCase());
+        const deleteItem = removeProductCart.filter((item) => item.id.toLowerCase() !== itemToDelete.toLowerCase());
         console.log("deleteItem" , deleteItem)
-        setRemoveCartItem(deleteItem);
+        setRemoveProductCart(deleteItem);
         ResetCartCount(deleteItem);
     };
 
     const handleQuantityChange = (productID, newQuantity) => {
         if(/^\d*$/.test(newQuantity)){
-            const updatedCart = removeCartItem.map((item) => {
-                return item.id === productID ? { ...item, productQuantiity: Number(newQuantity) } : item;
+            const updatedCart = removeProductCart.map((item) => {
+                return item.id === productID ? { ...item, singleProductQuantity: Number(newQuantity) } : item;
             });
-            setRemoveCartItem(updatedCart);
+            setRemoveProductCart(updatedCart);
         }
     };
 
@@ -71,20 +70,20 @@ const Cart = () => {
             <div className="cartParent" style={{marginTop: 80, display:"flex"}}>
                 <div className="col-md-8">
                     <div className="card" style={{border: "none", background: "transparent" }}>
-                        {removeCartItem.length > 0 ? (
+                        {removeProductCart.length > 0 ? (
                             <div className="card-body" style={{ paddingBottom: 0 }}>
-                                {removeCartItem.map((cartItem) => (
-                                    <div key={cartItem.nameOfProduct} className="cart-items">
+                                {removeProductCart.map((cartItem) => (
+                                    <div key={cartItem.id} className="cart-items">
                                         <div style={{ padding: "10px" }}>
                                             <div className="">
                                                 <div className="d-flex" style={{ gridColumnGap: "40px" }}>
                                                     <a href={cartItem.urlOfProduct}>
-                                                        <img src={cartItem.productMainImage} alt="" />
+                                                        <img src={cartItem.productImage} height={100} width={100} alt="" />
                                                     </a>
                                                     <div>
                                                         <div className="nameAndDeliverDate">
                                                             <div className="card-text productName">
-                                                                {cartItem.nameOfProduct}
+                                                                {cartItem.itemName}
                                                             </div>
                                                             <div style={{ fontSize: 14, color: "#212121" }}>
                                                                 Delivered in 2 days
@@ -92,8 +91,8 @@ const Cart = () => {
                                                         </div>
                                                         <div>
                                                             <div className="price">
-                                                                {/* {cartItem.productQuantiity === 1 ? cartItem.priceOfProduct : cartItem.totalPriceSignleProd} */}
-                                                                {cartItem.totalPriceSignleProd}
+                                                                {/* {cartItem.singleProductQuantity === 1 ? cartItem.priceOfProduct : cartItem.totalPriceOfSingleProduct} */}
+                                                                {cartItem.totalPriceOfSingleProduct}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -101,15 +100,15 @@ const Cart = () => {
                                             </div>
                                             <div className="d-flex mt-4" style={{ columnGap: "15px" }}>
                                                 <div style={{display:"flex",gap:10}}>
-                                                    <button className="cartCounter" onClick={() => cartDecrement(cartItem.id)}>-</button>
+                                                    <button className="cartCounter" onClick={() => productCartDecrement(cartItem.id)}>-</button>
                                                     <input
                                                         type="text"
                                                         style={{width:30,textAlign:"center"}}
-                                                        value={cartItem.productQuantiity }
+                                                        value={cartItem.singleProductQuantity }
                                                         onChange={(e) => handleQuantityChange(cartItem.id, e.target.value)}
                                                         readOnly
                                                     />
-                                                    <button className="cartCounter" onClick={() => cartIncrement(cartItem.id)}>+</button>
+                                                    <button className="cartCounter" onClick={() => productCartIncrement(cartItem.id)}>+</button>
                                                 </div>
                                                 <div>
                                                     <button onClick={() => removeSingleItem(cartItem.id)}>
@@ -126,17 +125,9 @@ const Cart = () => {
                         )}
                     </div>
                 </div>
-                {
-                    removeCartItem.length >= 1 ? 
-                        <div className="col-md-4">
-                            <HomePageCartPayment allCartItem={removeCartItem}></HomePageCartPayment>
-                        </div>
-                    :
-                    ""
-                }
             </div>
         </>
     );
 };
 
-export default Cart;
+export default ProductInsideCart;
