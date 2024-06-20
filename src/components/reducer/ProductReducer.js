@@ -10,7 +10,7 @@ const ProductReducer = (state , action) => {
             let allCartItem = {
                 id : id,
                 itemName : name,
-                itemPrice : price,
+                itemPrice : Number(price),
                 itemCompany : company,
                 urlOfProduct : productUrl,
                 productImage : image,
