@@ -40,7 +40,6 @@ const Cart = () => {
     };
 
     const cartDecrement = (productID) => {
-
         const updatedCart = removeCartItem.map((item) => {
             if (item.id === productID && item.productQuantiity > 1) {
                 return { ...item, productQuantiity: item.productQuantiity - 1, totalPriceSignleProd: item.totalPriceSignleProd - item.priceOfProduct};

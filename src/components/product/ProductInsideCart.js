@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useProductContext } from "../context/ProductContext";
+import ProductCartPayment from "./ProductCartPayment";
 
 const ProductInsideCart = () => {
     const { ProductCart , ResetCartCount } = useProductContext();
@@ -7,7 +8,8 @@ const ProductInsideCart = () => {
     console.log("ProductCart" ,ProductCart)
     console.log("removeProductCart" ,removeProductCart)
 
-    removeProductCart.map((item)=>console.log("totalPriceOfSingleProduct", item.totalPriceOfSingleProduct))
+    // removeProductCart.map((item)=>console.log("totalPriceOfSingleProduct", item.totalPriceOfSingleProduct))
+    removeProductCart.map((item)=>console.log("totalPriceOfSingleProduct", item))
 
     useEffect(() => {
         // console.log("Cart component mounted" , ProductCart);
@@ -30,7 +32,7 @@ const ProductInsideCart = () => {
     const productCartIncrement = (productID) => {
         const updatedCart = removeProductCart.map((item) => {
             if (item.id === productID) {
-                return { ...item, singleProductQuantity: item.singleProductQuantity + 1, totalPriceOfSingleProduct: (item.singleProductQuantity + 1)  * item.priceOfProduct};
+                return { ...item, singleProductQuantity: item.singleProductQuantity + 1, totalPriceOfSingleProduct: (item.singleProductQuantity + 1)  * item.itemPrice};
             }
             return item;
         });
@@ -39,13 +41,13 @@ const ProductInsideCart = () => {
     };
 
     const productCartDecrement = (productID) => {
-
         const updatedCart = removeProductCart.map((item) => {
             if (item.id === productID && item.singleProductQuantity > 1) {
                 return { ...item, singleProductQuantity: item.singleProductQuantity - 1, totalPriceOfSingleProduct: item.totalPriceOfSingleProduct - item.priceOfProduct};
             }
             return item;
         });
+        console.log("updatedCart" , updatedCart)
         setRemoveProductCart(updatedCart);
     };
 
@@ -125,6 +127,14 @@ const ProductInsideCart = () => {
                         )}
                     </div>
                 </div>
+                {
+                    removeProductCart.length >= 1 ? 
+                        <div className="col-md-4">
+                            <ProductCartPayment allProductCartItem={removeProductCart}></ProductCartPayment>
+                        </div>
+                    :
+                    ""
+                }
             </div>
         </>
     );
