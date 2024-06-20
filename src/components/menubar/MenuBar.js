@@ -9,8 +9,14 @@ const MenuBar = () => {
     const [isNavItemVisible, setNavItemVisibility] = useState(false);
     const {cart} = useCartContext();
     const [cartBadge , setCartBadge] = useState()
+    const [productCartBadge , setProductCartBadge] = useState()
     const { ProductCart } = useProductContext();
 
+
+/*
+    We can use a single state variable to work on both cartBadge, but here we have two different cart page one is for cart and another
+    one is for product cart page, so we will be writing two code. this can be accomplished using one state only if there was single page.
+*/
 
     useEffect(()=>{
         let z = cart.length;
@@ -35,17 +41,39 @@ const MenuBar = () => {
         }
     },[cartBadge])
 
+    //Product cart
+
+    useEffect(()=>{
+        let z = ProductCart.length;
+        setProductCartBadge(z);
+    },[ProductCart])
+    console.log("cart menu bar" , productCartBadge)
+
+    useEffect(()=>{
+        const storedProductBadgeToken = JSON.parse(localStorage.getItem("productCartCountStore"));
+        if(storedProductBadgeToken){
+            setProductCartBadge(storedProductBadgeToken);
+        }
+        console.log("storedProductBadgeToken" , storedProductBadgeToken);
+    },[])
+    console.log("productCartBadge" , productCartBadge)
+
+    useEffect(()=>{
+        if(productCartBadge > 0){
+            localStorage.setItem("productCartCountStore" , JSON.stringify(productCartBadge));
+        }else if(productCartBadge === 0){
+            localStorage.removeItem('productCartCountStore');
+        }
+    },[productCartBadge])
+
+    //Navbar show and hide on toggle and click
+
     const handleNavItemClick = () => {
         // console.log(isNavItemVisible)
         isNavItemVisible ? setNavItemVisibility(false) : setNavItemVisibility(true)
     };
 
     const LogoClick = () => {
-        isNavItemVisible && setNavItemVisibility(false)
-    }
-
-    window.onclick = () => {
-        console.log("window clicked" , isNavItemVisible);
         isNavItemVisible && setNavItemVisibility(false)
     }
 
@@ -87,14 +115,14 @@ const MenuBar = () => {
                                 </div>
                             }
                             {
-                                ProductCart.length > 0 &&
+                                productCartBadge > 0 &&
                                 <div className="navbar-brand">
                                     <Link to="product-cart" className="nav-link" onClick={handleNavItemClick}>
                                         <i className="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}>
                                             <span style={{fontSize:"9px"}} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                                 {
-                                                    ProductCart.length > 0 ? 
-                                                    <span>{ProductCart.length}</span> : ""
+                                                    productCartBadge > 0 ? 
+                                                    <span>{productCartBadge}</span> : ""
                                                 }
                                             </span>
                                         </i>
@@ -102,6 +130,15 @@ const MenuBar = () => {
                                     </Link>
                                 </div>
                             }
+                            {/* {
+                                (!ProductCart || !cartBadge) &&
+                                <div className="navbar-brand">
+                                    <Link to="product-cart" className="nav-link" onClick={handleNavItemClick}>
+                                        <i className="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}></i>
+                                        Cart
+                                    </Link>
+                                </div>
+                            } */}
                         </div>
                     </div>
                 </nav>
