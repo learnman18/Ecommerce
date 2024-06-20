@@ -8,7 +8,7 @@ import { useProductContext } from "../context/ProductContext";
 const MenuBar = () => {
     const [isNavItemVisible, setNavItemVisibility] = useState(false);
     const {cart} = useCartContext();
-    const [cartBadge , setCartBadge] = useState(cart)
+    const [cartBadge , setCartBadge] = useState()
     const { ProductCart } = useProductContext();
 
 
@@ -44,6 +44,10 @@ const MenuBar = () => {
         isNavItemVisible && setNavItemVisibility(false)
     }
 
+    window.onclick = () => {
+        console.log("window clicked" , isNavItemVisible);
+        isNavItemVisible && setNavItemVisibility(false)
+    }
 
     return(
         <>
