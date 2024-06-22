@@ -56,10 +56,10 @@ const SingleProduct = () => {
                                 </div>
                                 <div className="col-12 col-sm-12 col-md-6">
                                     <div className="">
-                                        <h3>{item.name}</h3>
-                                        <p>{item.description}</p>
-                                        <p>Brand : {item.company}</p>
-                                        <p>Price : {item.price}</p>
+                                        <h3 style={{textTransform:"capitalize"}}>{item.name}</h3>
+                                        <p className="productInfo">{item.description}</p>
+                                        <p className="productInfo" style={{paddingTop:15}}>Brand : {item.company}</p>
+                                        <p className="productInfo" style={{paddingBottom:15}}>Price : {item.price}</p>
                                         <div style={{marginBottom:"5px"}}>
                                             <button className="cartCounter" onClick={productCartDecrement}>-</button>
                                             <p className="count">{itemCount}</p>
