@@ -43,7 +43,7 @@ const ProductInsideCart = () => {
     const productCartDecrement = (productID) => {
         const updatedCart = removeProductCart.map((item) => {
             if (item.id === productID && item.singleProductQuantity > 1) {
-                return { ...item, singleProductQuantity: item.singleProductQuantity - 1, totalPriceOfSingleProduct: item.totalPriceOfSingleProduct - item.priceOfProduct};
+                return { ...item, singleProductQuantity: item.singleProductQuantity - 1, totalPriceOfSingleProduct: item.totalPriceOfSingleProduct - item.itemPrice};
             }
             return item;
         });
