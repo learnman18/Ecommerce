@@ -51,8 +51,8 @@ const AllProducts = () => {
                                 allCartProducts.map((item)=>
                                 (
                                     <div className="col-md-4" key={item.id}>
-                                        <Link to={`/AllProdcuts/${item.name}`}>
-                                            <div className="card">
+                                        <Link style={{textDecoration:"none"}} to={`/AllProdcuts/${item.name}`}>
+                                            <div className="card allProductCard">
                                                 <img src={item.image} className="card-img-top" alt="..." />
                                                 <div className="card-body">
                                                     <p className="card-text">{item.name}</p>
