@@ -66,7 +66,7 @@ const SingleProduct = () => {
                                             <button className="cartCounter" onClick={productCartIncrement}>+</button>
                                         </div>
                                         <button className="btn btn-warning" onClick={()=> {
-                                            AddCartItem(item.id, item.name, item.price, item.company, item.image, productUrl, itemCount);
+                                            AddCartItem(item.id, item.name, item.price, item.company, item.image, productUrl, itemCount, item.category);
                                         }}>Add to cart</button>
                                     </div>
                                 </div>

@@ -9,9 +9,9 @@ const initialState = {
 
 const ProductProvider = ({children}) => {
     const [state , dispatch] = useReducer(reducer  , initialState);
-    const AddCartItem = (id, name, price, company, image, productUrl, itemCount) => {
+    const AddCartItem = (id, name, price, company, image, productUrl, itemCount, category) => {
         console.log("item" , name);
-        dispatch({type:"ALL_ITEMS" , payload : {id, name, price, company, image, productUrl, itemCount}})
+        dispatch({type:"ALL_ITEMS" , payload : {id, name, price, company, image, productUrl, itemCount, category}})
     }
 
     const ResetCartCount  = (deleteItem) => {

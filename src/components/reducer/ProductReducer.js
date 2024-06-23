@@ -1,7 +1,7 @@
 const ProductReducer = (state , action) => {
     
     if(action.type === "ALL_ITEMS"){
-        const {id, name, price, company, productUrl, image, itemCount} = action.payload;
+        const {id, name, price, company, productUrl, image, itemCount, category} = action.payload;
 
         const existingProductIndex = state.ProductCart.findIndex((item) => item.itemName === name);
         console.log("productReducer" , company)
@@ -15,7 +15,8 @@ const ProductReducer = (state , action) => {
                 urlOfProduct : productUrl,
                 productImage : image,
                 singleProductQuantity : itemCount,
-                totalPriceOfSingleProduct : Number(price) * Number(itemCount)
+                totalPriceOfSingleProduct : Number(price) * Number(itemCount),
+                productCategory : category
             }
             return {
                 // ...state,

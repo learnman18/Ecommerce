@@ -1,6 +1,9 @@
 import React from "react";
+// import useProductContext from "../../context/ProductContext"
 
 export default function FilterDesktop (props) {
+
+    // const {ProductCart} = useProductContext()
 
     const categories = new Set();
     if (props.allProductData) {
@@ -13,6 +16,10 @@ export default function FilterDesktop (props) {
         console.log("event" , event);
     }
 
+    const CategorySelect = (clickedCategory) => {
+        props.clickedCategoryItem(clickedCategory)
+    }
+
     return(
         <>
             <div>
@@ -23,7 +30,7 @@ export default function FilterDesktop (props) {
                     <p>Category</p>
                     <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
                     {[...categories].map((category) => (
-                        <li key={category}>{category}</li>
+                        <li key={category} className="categoryItem" onClick={()=>CategorySelect(category)}>{category}</li>
                     ))}
                     </ul>
                 </div>

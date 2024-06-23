@@ -21,6 +21,15 @@ const AllProducts = () => {
         .catch((err)=>console.log("error" , err));
     },[])
 
+    //will get a function from child comp which is filerMobile and filterDesktop, on click of category I want to display the product.
+
+    const selectedCategory = (clickedCategory) => {
+        allCartProducts.map((item)=>(
+            // console.log(item.category === clickedCategory)
+            item.category === clickedCategory ? console.log("clicked" , clickedCategory) : ""
+        ))
+    }
+
     return(
         <>
             {
@@ -35,12 +44,12 @@ const AllProducts = () => {
                         <div className="col-md-3">
                             {/* start - For laptop and desktop */}
                             <div className="d-md-block d-none">
-                                <FilterDesktop allProductData={allCartProducts}></FilterDesktop>
+                                <FilterDesktop allProductData={allCartProducts} clickedCategoryItem={selectedCategory}></FilterDesktop>
                             </div>
                             {/* end - For laptop and desktop */}
                             {/* start - For Mobiles */}
                             <div className="d-block d-md-none">
-                                <FilterMobile allProductData={allCartProducts}></FilterMobile>
+                                <FilterMobile allProductData={allCartProducts} clickedCategoryItem={selectedCategory}></FilterMobile>
                             </div>
                             {/* end - For Mobiles */}
                         </div>
