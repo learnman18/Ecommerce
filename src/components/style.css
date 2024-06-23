@@ -279,3 +279,9 @@ bottom: 0;
 p.productInfo {
     margin-bottom: 0;
 }
+.categoryItem {
+    cursor: pointer;
+    padding: 5px 0;
+    border-bottom: 2px solid #4b00ff7a;
+    display: table;
+}
