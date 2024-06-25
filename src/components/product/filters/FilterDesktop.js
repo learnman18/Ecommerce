@@ -20,6 +20,10 @@ export default function FilterDesktop (props) {
         props.clickedCategoryItem(clickedCategory)
     }
 
+    const ClearFilter = () => {
+        props.clearAllFilters()
+    }
+
     return(
         <>
             <div>
@@ -35,7 +39,7 @@ export default function FilterDesktop (props) {
                     </ul>
                 </div>
                 <div>
-                    <button>Clear Filter</button>
+                    <button onClick={ClearFilter}>Clear Filter</button>
                 </div>
             </div>
         </>
