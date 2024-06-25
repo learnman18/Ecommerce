@@ -7,6 +7,18 @@ export default function FilterMobile (props){
         props.allProductData.map((item)=> categories.add(item.category))
     }
 
+    const SearchProduct = (event) => {
+        console.log("event" , event);
+    }
+
+    const CategorySelect = (clickedCategory) => {
+        props.clickedCategoryItem(clickedCategory)
+    }
+
+    const ClearFilter = () => {
+        props.clearAllFilters()
+    }
+
     return(
         <>
             <div className="accordion" id="accordionExample">
@@ -19,20 +31,20 @@ export default function FilterMobile (props){
                     <div id="collapseOne" className="accordion-collapse collapse hide" data-bs-parent="#accordionExample">
                         <div className="accordion-body">
                             <div>
-                                <input type="text" placeholder="search"/>
+                                <input type="text" placeholder="search" onChange={(event)=>SearchProduct(event.target.value)}/>
                             </div>
                             <div>
                                 <p>Category</p>
                                 <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
                                     {
                                         [...categories].map((category , index)=>(
-                                            <li key={index}>{category}</li>
+                                            <li key={index} onClick={()=>CategorySelect(category)}>{category}</li>
                                         ))
                                     }
                                 </ul>
                             </div>
                             <div>
-                                <button>Clear Filter</button>
+                                <button onClick={ClearFilter}>Clear Filter</button>
                             </div>
                         </div>
                     </div>
