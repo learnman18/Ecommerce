@@ -9,6 +9,8 @@ const AllProducts = () => {
 
     const [allCartProducts , setAllCartProducts] = useState();
     const [pageLoader , setPageLoader] = useState(false);
+    const [displaySelectedCategroy , setdisplaySelectedCategroy] = useState();
+    const [categoryStyle , setCategoryStyle] = useState("");
     
     useEffect(()=>{
         setPageLoader(true)
@@ -24,10 +26,20 @@ const AllProducts = () => {
     //will get a function from child comp which is filerMobile and filterDesktop, on click of category I want to display the product.
 
     const selectedCategory = (clickedCategory) => {
-        allCartProducts.map((item)=>(
+        setCategoryStyle("d-none");
+        const cat = allCartProducts.map((item)=>(
             // console.log(item.category === clickedCategory)
-            item.category === clickedCategory ? console.log("clicked" , clickedCategory) : ""
+            item.category === clickedCategory ? item : ""
         ))
+        console.log("cat" , cat);
+        setdisplaySelectedCategroy(cat);
+    }
+
+    //Clear filter passing from child to parent
+
+    const ClickedClearFilter = () => {
+        setCategoryStyle("");
+        console.log("clear filter");
     }
 
     return(
@@ -38,18 +50,18 @@ const AllProducts = () => {
             {
                 !pageLoader && 
 
-                <div style={{marginTop:"80px"}}>
+            <div style={{marginTop:"80px"}}>
                 <div className="row">
                     <div className="col-md-12 d-flex productPage flex-wrap">
                         <div className="col-md-3">
                             {/* start - For laptop and desktop */}
                             <div className="d-md-block d-none">
-                                <FilterDesktop allProductData={allCartProducts} clickedCategoryItem={selectedCategory}></FilterDesktop>
+                                <FilterDesktop allProductData={allCartProducts} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterDesktop>
                             </div>
                             {/* end - For laptop and desktop */}
                             {/* start - For Mobiles */}
                             <div className="d-block d-md-none">
-                                <FilterMobile allProductData={allCartProducts} clickedCategoryItem={selectedCategory}></FilterMobile>
+                                <FilterMobile allProductData={allCartProducts} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterMobile>
                             </div>
                             {/* end - For Mobiles */}
                         </div>
@@ -58,8 +70,8 @@ const AllProducts = () => {
                                 allCartProducts && 
 
                                 allCartProducts.map((item)=>
-                                (
-                                    <div className="col-md-4" key={item.id}>
+                                    (
+                                    <div className={`col-md-4 ${categoryStyle}`} key={item.id}>
                                         <Link style={{textDecoration:"none"}} to={`/AllProdcuts/${item.name}`}>
                                             <div className="card allProductCard">
                                                 <img src={item.image} className="card-img-top" alt="..." />
@@ -71,7 +83,29 @@ const AllProducts = () => {
                                             </div>
                                         </Link>    
                                     </div>  
-                                ))
+                                    )
+                                )
+                            }
+                            {
+                                displaySelectedCategroy && 
+
+                                displaySelectedCategroy.map((item)=>
+                                    item.id &&
+                                    (
+                                        <div className="col-md-4" key={item.id}>
+                                            <Link style={{textDecoration:"none"}} to={`/AllProdcuts/${item.name}`}>
+                                                <div className="card allProductCard">
+                                                    <img src={item.image} className="card-img-top" alt="..." />
+                                                    <div className="card-body">
+                                                        <p className="card-text">{item.name}</p>
+                                                        <p className="card-text">{item.price}</p>
+                                                        <p className="card-text">{item.company}</p>
+                                                    </div>
+                                                </div>
+                                            </Link>    
+                                        </div>  
+                                    )
+                                )
                             }
                         </div>
                     </div>
