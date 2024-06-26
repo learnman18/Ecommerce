@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 
 export default function FilterMobile (props){
+
+    const [selectedCategoryOption , setSelectedCategoryOption] = useState();
 
     const categories = new Set();
     if(props.allProductData){
         props.allProductData.map((item)=> categories.add(item.category))
     }
+
+    useEffect(()=>{
+        props.displaySelectedCat && props.displaySelectedCat.map((item)=>{
+            let x = item.category.split(",");
+            console.log("x" , x[0])
+            return setSelectedCategoryOption(x[0]);
+        })
+    },[props.displaySelectedCat])
+    // console.log("selectedCategoryOption" , selectedCategoryOption)
 
     const SearchProduct = (event) => {
         console.log("event" , event);
@@ -16,7 +27,8 @@ export default function FilterMobile (props){
     }
 
     const ClearFilter = () => {
-        props.clearAllFilters()
+        props.clearAllFilters(); //this is child page, and we are doing here child to parent props passing through function, we are calling the parent funcion here
+        setSelectedCategoryOption("") // just to remove the highlight class
     }
 
     return(
@@ -38,7 +50,7 @@ export default function FilterMobile (props){
                                 <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
                                     {
                                         [...categories].map((category , index)=>(
-                                            <li key={index} className="categoryItem" onClick={()=>CategorySelect(category)}>{category}</li>
+                                            <li key={category} className={`categoryItem ${selectedCategoryOption === category ? "highlight" : ""}`} onClick={()=>CategorySelect(category)}>{category}</li>
                                         ))
                                     }
                                 </ul>
