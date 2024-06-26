@@ -27,19 +27,17 @@ const AllProducts = () => {
 
     const selectedCategory = (clickedCategory) => {
         setCategoryStyle("d-none");
-        const cat = allCartProducts.map((item)=>(
+        const cat = allCartProducts.filter((item)=>(
             // console.log(item.category === clickedCategory)
             item.category === clickedCategory ? item : ""
         ))
         console.log("cat" , cat);
         setdisplaySelectedCategroy(cat);
     }
-
     //Clear filter passing from child to parent
 
     const ClickedClearFilter = () => {
         setCategoryStyle("");
-        console.log("clear filter");
     }
 
     return(
@@ -56,12 +54,12 @@ const AllProducts = () => {
                         <div className="col-md-3">
                             {/* start - For laptop and desktop */}
                             <div className="d-md-block d-none">
-                                <FilterDesktop allProductData={allCartProducts} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterDesktop>
+                                <FilterDesktop allProductData={allCartProducts} displaySelectedCat={displaySelectedCategroy} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterDesktop>
                             </div>
                             {/* end - For laptop and desktop */}
                             {/* start - For Mobiles */}
                             <div className="d-block d-md-none">
-                                <FilterMobile allProductData={allCartProducts} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterMobile>
+                                <FilterMobile allProductData={allCartProducts} displaySelectedCat={displaySelectedCategroy} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterMobile>
                             </div>
                             {/* end - For Mobiles */}
                         </div>
