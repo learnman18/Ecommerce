@@ -12,10 +12,11 @@ const LandingPage = () => {
         <>
             <div className="row gy-4 align-items-center features-item" style={{paddingBottom:"60px"}}>
                 <div className="col-lg-5 order-2 order-lg-1 aos-init" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Corporis temporibus maiores provident</h3>
+                    <h3>Brwose, some of your favourite products</h3>
                     <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                    We're thrilled to have you here. At Ecommerce, we offer a wide range of products to cater to all your needs. 
+                    Whether you're looking for the latest fashion trends, essential home goods, cutting-edge electronics, 
+                    or unique gifts, we've got you covered.
                     </p>
                     <Link to="/products" className="btn btn-get-started">Get Started</Link>
                 </div>

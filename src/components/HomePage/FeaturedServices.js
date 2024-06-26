@@ -124,7 +124,7 @@ const FeaturedItems = () => {
         <>
             <div className="mt-5 featured">
                 <div className="container section-title">
-                    <h2>Portfolio</h2>
+                    <h2>Home Products</h2>
                     <p>Some home page products that can be bought</p>
                 </div> 
                 <div className="compTwoContainer mt-5">

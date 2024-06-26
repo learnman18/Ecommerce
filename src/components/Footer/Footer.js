@@ -9,10 +9,8 @@ const Footer = () => {
                 <div className="row gy-4">
                     <div className="col-md-12 footer-about">
                         <Link to="/" className="logo d-flex align-items-center justify-content-center">Ecommerce</Link>
-                        <p>
-                            Cras fermentum odio eu feugiat lide par naso tierra. Justo
-                            eget nada terra videa magna derita valies darta donna mare
-                            fermentum iaculis eu non diam phasellus.
+                        <p className="text-center">
+                            Shop , your favourite products
                         </p>
                     </div>
 
