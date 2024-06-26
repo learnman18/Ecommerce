@@ -36,6 +36,7 @@
     }
     .productPage{
         flex-direction: column;
+        padding: 0 20px;
     }
     .card.allProductCard{
         margin-bottom: 20px;
@@ -284,4 +285,11 @@ p.productInfo {
     padding: 5px 0;
     border-bottom: 2px solid #4b00ff7a;
     display: table;
+    position: relative;
+}
+.categoryItem:active {
+    top: 1px;
+}
+.highlight{
+    font-weight: bold;
 }

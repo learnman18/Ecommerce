@@ -21,7 +21,7 @@ export default function FilterMobile (props){
 
     return(
         <>
-            <div className="accordion" id="accordionExample">
+            <div className="accordion" id="accordionExample" style={{marginBottom:10}}>
                 <div className="accordion-item">
                     <h2 className="accordion-header">
                         <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -29,16 +29,16 @@ export default function FilterMobile (props){
                         </button>
                     </h2>
                     <div id="collapseOne" className="accordion-collapse collapse hide" data-bs-parent="#accordionExample">
-                        <div className="accordion-body">
+                        <div className="accordion-body" >
                             <div>
                                 <input type="text" placeholder="search" onChange={(event)=>SearchProduct(event.target.value)}/>
                             </div>
                             <div>
-                                <p>Category</p>
+                                <p style={{margin:"10px 0",fontWeight:500}}>Category</p>
                                 <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
                                     {
                                         [...categories].map((category , index)=>(
-                                            <li key={index} onClick={()=>CategorySelect(category)}>{category}</li>
+                                            <li key={index} className="categoryItem" onClick={()=>CategorySelect(category)}>{category}</li>
                                         ))
                                     }
                                 </ul>
