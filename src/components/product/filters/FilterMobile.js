@@ -19,7 +19,7 @@ export default function FilterMobile (props){
     // console.log("selectedCategoryOption" , selectedCategoryOption)
 
     const SearchProduct = (event) => {
-        console.log("event" , event);
+        props.searchItem(event)
     }
 
     const CategorySelect = (clickedCategory) => {
@@ -29,6 +29,7 @@ export default function FilterMobile (props){
     const ClearFilter = () => {
         props.clearAllFilters(); //this is child page, and we are doing here child to parent props passing through function, we are calling the parent funcion here
         setSelectedCategoryOption("") // just to remove the highlight class
+        document.querySelector(".searchBox").value = "";
     }
 
     return(
@@ -43,7 +44,7 @@ export default function FilterMobile (props){
                     <div id="collapseOne" className="accordion-collapse collapse hide" data-bs-parent="#accordionExample">
                         <div className="accordion-body" >
                             <div>
-                                <input type="text" placeholder="search" onChange={(event)=>SearchProduct(event.target.value)}/>
+                                <input type="text" className="searchBox" placeholder="search" onChange={(event)=>SearchProduct(event.target.value)}/>
                             </div>
                             <div>
                                 <p style={{margin:"10px 0",fontWeight:500}}>Category</p>

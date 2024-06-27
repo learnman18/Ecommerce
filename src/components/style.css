@@ -287,9 +287,17 @@ p.productInfo {
     display: table;
     position: relative;
 }
-.categoryItem:active {
+.clearFilter:active, .categoryItem:active {
     top: 1px;
 }
 .highlight{
     font-weight: bold;
+}
+.clearFilter{
+    position: relative;
+    background-color: #e84545;
+    color: #ffffff;
+    padding: 6px 20px 6px 20px;
+    border-radius: 4px;
+    border: none;
 }
