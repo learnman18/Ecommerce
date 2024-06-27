@@ -10,6 +10,7 @@ const AllProducts = () => {
     const [allCartProducts , setAllCartProducts] = useState();
     const [pageLoader , setPageLoader] = useState(false);
     const [displaySelectedCategroy , setdisplaySelectedCategroy] = useState();
+    const [searchedItem , setSearchedItem] = useState();
     const [categoryStyle , setCategoryStyle] = useState("");
     
     useEffect(()=>{
@@ -23,7 +24,7 @@ const AllProducts = () => {
         .catch((err)=>console.log("error" , err));
     },[])
 
-    //will get a function from child comp which is filerMobile and filterDesktop, on click of category I want to display the product.
+    //will get a function from child comp which is filterMobile and filterDesktop, on click of category I want to display the product.
 
     const selectedCategory = (clickedCategory) => {
         setCategoryStyle("d-none");
@@ -34,10 +35,22 @@ const AllProducts = () => {
         console.log("cat" , cat);
         setdisplaySelectedCategroy(cat);
     }
+
     //Clear filter passing from child to parent
 
     const ClickedClearFilter = () => {
         setCategoryStyle("");
+        setSearchedItem("");
+    }
+
+    //search product from text box
+
+    const SearchItems = (event) =>{
+        setCategoryStyle("d-none");
+        let z = allCartProducts.filter((filteredItem)=>{
+            return filteredItem.name.toLowerCase().includes(event.toLowerCase())
+        })
+        setSearchedItem(z);
     }
 
     return(
@@ -54,12 +67,12 @@ const AllProducts = () => {
                         <div className="col-md-3">
                             {/* start - For laptop and desktop */}
                             <div className="d-md-block d-none">
-                                <FilterDesktop allProductData={allCartProducts} displaySelectedCat={displaySelectedCategroy} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterDesktop>
+                                <FilterDesktop allProductData={allCartProducts} searchItem = {SearchItems} displaySelectedCat={displaySelectedCategroy} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterDesktop>
                             </div>
                             {/* end - For laptop and desktop */}
                             {/* start - For Mobiles */}
                             <div className="d-block d-md-none">
-                                <FilterMobile allProductData={allCartProducts} displaySelectedCat={displaySelectedCategroy} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterMobile>
+                                <FilterMobile allProductData={allCartProducts} searchItem = {SearchItems} displaySelectedCat={displaySelectedCategroy} clickedCategoryItem={selectedCategory} clearAllFilters={ClickedClearFilter}></FilterMobile>
                             </div>
                             {/* end - For Mobiles */}
                         </div>
@@ -89,6 +102,27 @@ const AllProducts = () => {
 
                                 displaySelectedCategroy.map((item)=>
                                     item.id &&
+                                    (
+                                        <div className="col-md-4" key={item.id}>
+                                            <Link style={{textDecoration:"none"}} to={`/AllProdcuts/${item.name}`}>
+                                                <div className="card allProductCard">
+                                                    <img src={item.image} className="card-img-top" alt="..." />
+                                                    <div className="card-body">
+                                                        <p className="card-text">{item.name}</p>
+                                                        <p className="card-text">{item.price}</p>
+                                                        <p className="card-text">{item.company}</p>
+                                                    </div>
+                                                </div>
+                                            </Link>    
+                                        </div>  
+                                    )
+                                )
+                            }
+                            {
+                                searchedItem && 
+
+                                searchedItem.map((item)=>
+                                    item.name && 
                                     (
                                         <div className="col-md-4" key={item.id}>
                                             <Link style={{textDecoration:"none"}} to={`/AllProdcuts/${item.name}`}>

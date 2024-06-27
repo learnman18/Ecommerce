@@ -13,6 +13,7 @@ export default function FilterDesktop (props) {
     });
     }
 
+    //To apply the style to highligh the category when user select's any option
     useEffect(()=>{
         props.displaySelectedCat && props.displaySelectedCat.map((item)=>{
             let x = item.category.split(",");
@@ -21,9 +22,10 @@ export default function FilterDesktop (props) {
         })
     },[props.displaySelectedCat])
     // console.log("selectedCategoryOption" , selectedCategoryOption)
+
     
     const SearchProduct = (event) => {
-        console.log("event" , event);
+        props.searchItem(event)
     }
 
     const CategorySelect = (clickedCategory) => {
@@ -33,13 +35,14 @@ export default function FilterDesktop (props) {
     const ClearFilter = () => {
         props.clearAllFilters(); //this is child page, and we are doing here child to parent props passing through function, we are calling the parent funcion here
         setSelectedCategoryOption("") // just to remove the highlight class
+        document.querySelector(".searchBox").value = "";
     }
 
     return(
         <>
             <div style={{paddingLeft:15}}>
                 <div>
-                    <input type="text" placeholder="search" onChange={(event)=>SearchProduct(event.target.value)}/>
+                    <input type="text" className="searchBox" placeholder="search" onChange={(event)=>SearchProduct(event.target.value)}/>
                 </div>
                 <div>
                     <p style={{margin:"10px 0",fontWeight:500}}>Category</p>
@@ -50,7 +53,7 @@ export default function FilterDesktop (props) {
                     </ul>
                 </div>
                 <div>
-                    <button onClick={ClearFilter}>Clear Filter</button>
+                    <button className="clearFilter" onClick={ClearFilter}>Clear Filter</button>
                 </div>
             </div>
         </>
