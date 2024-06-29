@@ -4,67 +4,76 @@ import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle"
 import { Link, NavLink } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 import { useProductContext } from "../context/ProductContext";
+import { useBadgeContext } from "../context/BadgeContextProvider";
 
 const MenuBar = () => {
     const [isNavItemVisible, setNavItemVisibility] = useState(false);
     const {cart} = useCartContext();
-    const [cartBadge , setCartBadge] = useState()
-    const [productCartBadge , setProductCartBadge] = useState()
-    const { ProductCart } = useProductContext();
+    // const [cartBadge , setCartBadge] = useState()
+    // const [productCartBadge , setProductCartBadge] = useState()
+    const { ProductCart} = useProductContext();
+    const { cartBadge, productCartBadge } = useBadgeContext();
+    const [totalBadge , setTotalBadge] = useState();
 
+    console.log("cart", cart);
+    console.log("productCart" , ProductCart)
+
+    useEffect(()=>{
+        setTotalBadge(cartBadge + productCartBadge)
+    },[cartBadge, productCartBadge])
 
 /*
     We can use a single state variable to work on both cartBadge, but here we have two different cart page one is for cart and another
     one is for product cart page, so we will be writing two code. this can be accomplished using one state only if there was single page.
 */
 
-    useEffect(()=>{
-        let z = cart.length;
-        setCartBadge(z);
-    },[cart])
-    console.log("cart menu bar" , cartBadge)
+    // useEffect(()=>{
+    //     let z = cart.length;
+    //     setCartBadge(z);
+    // },[cart])
+    // console.log("cart menu bar" , cartBadge)
 
-    useEffect(()=>{
-        const storedBadgeToken = JSON.parse(localStorage.getItem("cartCountStore"));
-        if(storedBadgeToken){
-            setCartBadge(storedBadgeToken);
-        }
-        console.log("storedBadgeToken" , storedBadgeToken);
-    },[])
-    console.log("cartBadge" , cartBadge)
+    // useEffect(()=>{
+    //     const storedBadgeToken = JSON.parse(localStorage.getItem("cartCountStore"));
+    //     if(storedBadgeToken){
+    //         setCartBadge(storedBadgeToken);
+    //     }
+    //     console.log("storedBadgeToken" , storedBadgeToken);
+    // },[])
+    // console.log("cartBadge" , cartBadge)
 
-    useEffect(()=>{
-        if(cartBadge > 0){
-            localStorage.setItem("cartCountStore" , JSON.stringify(cartBadge));
-        }else if(cartBadge === 0){
-            localStorage.removeItem('cartCountStore');
-        }
-    },[cartBadge])
+    // useEffect(()=>{
+    //     if(cartBadge > 0){
+    //         localStorage.setItem("cartCountStore" , JSON.stringify(cartBadge));
+    //     }else if(cartBadge === 0){
+    //         localStorage.removeItem('cartCountStore');
+    //     }
+    // },[cartBadge])
 
-    //Product cart
+    // //Product cart
 
-    useEffect(()=>{
-        let z = ProductCart.length;
-        setProductCartBadge(z);
-    },[ProductCart])
-    console.log("cart menu bar" , productCartBadge)
+    // useEffect(()=>{
+    //     let z = ProductCart.length;
+    //     setProductCartBadge(z);
+    // },[ProductCart])
+    // console.log("cart menu bar" , productCartBadge)
 
-    useEffect(()=>{
-        const storedProductBadgeToken = JSON.parse(localStorage.getItem("productCartCountStore"));
-        if(storedProductBadgeToken){
-            setProductCartBadge(storedProductBadgeToken);
-        }
-        console.log("storedProductBadgeToken" , storedProductBadgeToken);
-    },[])
-    console.log("productCartBadge" , productCartBadge)
+    // useEffect(()=>{
+    //     const storedProductBadgeToken = JSON.parse(localStorage.getItem("productCartCountStore"));
+    //     if(storedProductBadgeToken){
+    //         setProductCartBadge(storedProductBadgeToken);
+    //     }
+    //     console.log("storedProductBadgeToken" , storedProductBadgeToken);
+    // },[])
+    // console.log("productCartBadge" , productCartBadge)
 
-    useEffect(()=>{
-        if(productCartBadge > 0){
-            localStorage.setItem("productCartCountStore" , JSON.stringify(productCartBadge));
-        }else if(productCartBadge === 0){
-            localStorage.removeItem('productCartCountStore');
-        }
-    },[productCartBadge])
+    // useEffect(()=>{
+    //     if(productCartBadge > 0){
+    //         localStorage.setItem("productCartCountStore" , JSON.stringify(productCartBadge));
+    //     }else if(productCartBadge === 0){
+    //         localStorage.removeItem('productCartCountStore');
+    //     }
+    // },[productCartBadge])
 
     //Navbar show and hide on toggle and click
 
@@ -99,14 +108,14 @@ const MenuBar = () => {
                                 </li>
                             </ul>
                             {
-                                cartBadge > 0 &&
+                                
                                 <div className="navbar-brand">
                                     <Link to="cart" className="nav-link" onClick={handleNavItemClick}>
                                         <i className="bi bi-cart2 position-relative" style={{fontSize: "21px",fontWeight:"bold"}}>
                                             <span style={{fontSize:"9px"}} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                                 {
-                                                    cartBadge > 0 ? 
-                                                    <span>{cartBadge}</span> : ""
+                                                    totalBadge > 0 ? 
+                                                    <span>{totalBadge}</span> : ""
                                                 }
                                             </span>
                                         </i>
@@ -114,7 +123,7 @@ const MenuBar = () => {
                                     </Link>
                                 </div>
                             }
-                            {
+                            {/* {
                                 productCartBadge > 0 &&
                                 <div className="navbar-brand">
                                     <Link to="product-cart" className="nav-link" onClick={handleNavItemClick}>
@@ -129,7 +138,7 @@ const MenuBar = () => {
                                         Cart
                                     </Link>
                                 </div>
-                            }
+                            } */}
                             {/* {
                                 (!ProductCart || !cartBadge) &&
                                 <div className="navbar-brand">
