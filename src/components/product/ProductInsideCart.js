@@ -69,7 +69,7 @@ const ProductInsideCart = () => {
 
     return (
         <>
-            <div className="cartParent" style={{marginTop: 80, display:"flex"}}>
+            <div className="cartParent" style={{display:"flex"}}>
                 <div className="col-md-8">
                     <div className="card" style={{border: "none", background: "transparent" }}>
                         {removeProductCart.length > 0 ? (
