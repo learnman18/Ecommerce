@@ -67,7 +67,7 @@ export default function FilterMobile (props){
                                 </ul>
                             </div>
                             <div>
-                                <div style={{display:"flex",gridGap:"10px"}}>
+                                <div style={{display:"flex",gridGap:"10px",paddingTop:20}}>
                                     <select style={{width:"40%"}} className="form-select" id="mySelect" onChange={SortingTheProduct}>
                                         <option defaultValue>Sort</option>
                                         {sortOptions.map((item)=><option key={item} value={item}>{item}</option>)}
