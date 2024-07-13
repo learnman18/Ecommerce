@@ -47,6 +47,12 @@
         grid-gap: 8px;
         padding-left: 0px;
     }
+    .singleProductInfo{
+        padding: 20px;
+    }
+    .smallImages{
+        padding-left: 20px;
+    }
 }
 
 .features-item .image-stack {

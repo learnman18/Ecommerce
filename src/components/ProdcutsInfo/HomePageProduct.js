@@ -41,7 +41,7 @@ return(
                 <div className="col-12 col-sm-12 col-md-6">
                     <div className="d-flex align-items-center justify-content-center">
                         <div className="d-flex align-items-center">
-                            <div className="d-flex flex-column">
+                            <div className="d-flex flex-column smallImages">
                                 <img src={firstImage} style={{margin:"5px"}} alt="box1" onClick={displayTheMainImg}/>
                                 <img src={secondImage} style={{margin:"5px"}} alt="box2" onClick={displayTheMainImg}/>
                                 <img src={thirdImage} style={{margin:"5px"}} alt="box3" onClick={displayTheMainImg}/>
