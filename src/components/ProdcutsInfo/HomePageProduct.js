@@ -6,16 +6,18 @@ const HomePageProducts = ({prodcutName , productDescription , firstImage , secon
 
     const [alertForCartItem , setAlertForCartItem] = useState("hide")
     const {AddToCart } = useCartContext() //custom hook created
-    const [count , setCount] = useState(1);
+    // const [count , setCount] = useState(1);
     const productUrl = window.location.pathname;
 
-    const CartIncrement = () => {
-        setCount((prevCount) => Number(prevCount) + Number(1));
-      };
+    const count = 1;
+
+    // const CartIncrement = () => {
+    //     setCount((prevCount) => Number(prevCount) + Number(1));
+    //   };
     
-    const CartDecrement = () => {
-        setCount((prevCount) => (prevCount > 1 ? Number(prevCount) - Number(1) : prevCount));
-    };
+    // const CartDecrement = () => {
+    //     setCount((prevCount) => (prevCount > 1 ? Number(prevCount) - Number(1) : prevCount));
+    // };
 
     const displayTheMainImg = (event) => {
         let mainImg = document.querySelector(".biggerImage img");
@@ -56,11 +58,11 @@ return(
                         <p>{productDescription}</p>
                         <p>Brand : Apple</p>
                         <p>Price : {productPrice}</p>
-                        <div style={{marginBottom:"5px"}}>
+                        {/* <div style={{marginBottom:"5px"}}>
                             <button className="cartCounter" onClick={CartDecrement}>-</button>
                             <p className="count">{count}</p>
                             <button className="cartCounter" onClick={CartIncrement}>+</button>
-                        </div>
+                        </div> */}
                         <button className="btn btn-warning" onClick={()=> {
                             AddToCart(prodcutName , productPrice, firstImage, productUrl, count);
                             AlertMsg();

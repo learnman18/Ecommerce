@@ -6,7 +6,7 @@ import {useProductContext} from "../context/ProductContext"
 const SingleProduct = () => {
 
     const [product , setProduct] = useState();
-    const [itemCount , setItemCount] = useState(1);
+    // const [itemCount , setItemCount] = useState(1);
     const {AddCartItem} = useProductContext();
 
     const {singleProd} = useParams();
@@ -23,14 +23,15 @@ const SingleProduct = () => {
         .catch((err)=>console.log("error" , err));
     },[])
 
+    const itemCount = 1;
 
-    const productCartIncrement = () => {
-        setItemCount((prevCount) => Number(prevCount) + Number(1));
-      };
+    // const productCartIncrement = () => {
+    //     setItemCount((prevCount) => Number(prevCount) + Number(1));
+    //   };
     
-    const productCartDecrement = () => {
-        setItemCount((prevCount) => (prevCount > 1 ? Number(prevCount) - Number(1) : prevCount));
-    };
+    // const productCartDecrement = () => {
+    //     setItemCount((prevCount) => (prevCount > 1 ? Number(prevCount) - Number(1) : prevCount));
+    // };
 
     return(
         <>
@@ -60,11 +61,11 @@ const SingleProduct = () => {
                                         <p className="productInfo">{item.description}</p>
                                         <p className="productInfo" style={{paddingTop:15}}>Brand : {item.company}</p>
                                         <p className="productInfo" style={{paddingBottom:15}}>Price : {item.price}</p>
-                                        <div style={{marginBottom:"5px"}}>
+                                        {/* <div style={{marginBottom:"5px"}}>
                                             <button className="cartCounter" onClick={productCartDecrement}>-</button>
                                             <p className="count">{itemCount}</p>
                                             <button className="cartCounter" onClick={productCartIncrement}>+</button>
-                                        </div>
+                                        </div> */}
                                         <button className="btn btn-warning" onClick={()=> {
                                             AddCartItem(item.id, item.name, item.price, item.company, item.image, productUrl, itemCount, item.category);
                                         }}>Add to cart</button>
