@@ -4,10 +4,17 @@ export default function FilterMobile (props){
 
     const [selectedCategoryOption , setSelectedCategoryOption] = useState();
 
+    const sortOptions = ["A-Z" , "Z-A"];
+
     const categories = new Set();
     if(props.allProductData){
         props.allProductData.map((item)=> categories.add(item.category))
     }
+
+    useEffect(()=>{
+        const selectElement = document.getElementById("mySelect");
+        selectElement.options[0].disabled = true;
+    },[])
 
     useEffect(()=>{
         props.displaySelectedCat && props.displaySelectedCat.map((item)=>{
@@ -32,6 +39,10 @@ export default function FilterMobile (props){
         document.querySelector(".searchBox").value = "";
     }
 
+    const SortingTheProduct = (event) => {
+        props.SortProducts(event)
+    }
+
     return(
         <>
             <div className="accordion" id="accordionExample" style={{marginBottom:10}}>
@@ -49,12 +60,19 @@ export default function FilterMobile (props){
                             <div>
                                 <p style={{margin:"10px 0",fontWeight:500}}>Category</p>
                                 <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
-                                    {
-                                        [...categories].map((category , index)=>(
-                                            <li key={category} className={`categoryItem ${selectedCategoryOption === category ? "highlight" : ""}`} onClick={()=>CategorySelect(category)}>{category}</li>
-                                        ))
-                                    }
+                                    {[...categories].map((category) => (
+                                        <li tabIndex="0" key={category} className={`categoryItem ${selectedCategoryOption === category ? "highlight" : ""}`} 
+                                        onClick={()=>CategorySelect(category)}>{category}</li>
+                                    ))}
                                 </ul>
+                            </div>
+                            <div>
+                                <div className="btn-group">
+                                    <select className="form-select" id="mySelect" onChange={SortingTheProduct}>
+                                        <option defaultValue>Sort</option>
+                                        {sortOptions.map((item)=><option key={item} value={item}>{item}</option>)}
+                                    </select>
+                                </div>
                             </div>
                             <div>
                                 <button onClick={ClearFilter}>Clear Filter</button>
