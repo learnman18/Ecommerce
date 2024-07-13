@@ -103,9 +103,6 @@ const MenuBar = () => {
                                 <li className="nav-item">
                                     <NavLink className="nav-link active" aria-current="page" onClick={handleNavItemClick} to="products">Products</NavLink>
                                 </li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="cart" onClick={handleNavItemClick}>Link</NavLink>
-                                </li>
                             </ul>
                             {
                                 
