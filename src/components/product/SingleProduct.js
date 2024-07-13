@@ -40,7 +40,7 @@ const SingleProduct = () => {
                     product && 
                     product.map((item)=>(
                         item.name === decodeTheURL &&
-                            <div className="row" key={item.id}>
+                            <div className="row" key={item.id} style={{marginLeft:0,marginRight:0}}>
                                 <div className="col-12 col-sm-12 col-md-6">
                                     <div className="d-flex align-items-center justify-content-center">
                                         <div className="d-flex align-items-center">
@@ -56,7 +56,7 @@ const SingleProduct = () => {
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-12 col-md-6">
-                                    <div className="">
+                                    <div className="singleProductInfo">
                                         <h3 style={{textTransform:"capitalize"}}>{item.name}</h3>
                                         <p className="productInfo">{item.description}</p>
                                         <p className="productInfo" style={{paddingTop:15}}>Brand : {item.company}</p>
