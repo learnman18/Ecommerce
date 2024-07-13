@@ -46,12 +46,16 @@
         display: flex;
         grid-gap: 8px;
         padding-left: 0px;
+        flex-wrap: wrap
     }
     .singleProductInfo{
         padding: 20px;
     }
     .smallImages{
         padding-left: 20px;
+    }
+    .section-title h2:after, .section-title h2:before{
+        width: 35px !important;
     }
 }
 
