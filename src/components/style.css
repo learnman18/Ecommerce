@@ -59,6 +59,12 @@
     }
 }
 
+.ecommerce {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+}
+
 .features-item .image-stack {
     display: grid;
     position: relative;
