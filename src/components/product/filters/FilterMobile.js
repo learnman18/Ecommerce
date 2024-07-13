@@ -59,7 +59,7 @@ export default function FilterMobile (props){
                             </div>
                             <div>
                                 <p style={{margin:"10px 0",fontWeight:500}}>Category</p>
-                                <ul style={{listStyleType:"none",textTransform:"capitalize"}}>
+                                <ul className="mobileViewList" style={{listStyleType:"none",textTransform:"capitalize"}}>
                                     {[...categories].map((category) => (
                                         <li tabIndex="0" key={category} className={`categoryItem ${selectedCategoryOption === category ? "highlight" : ""}`} 
                                         onClick={()=>CategorySelect(category)}>{category}</li>
@@ -67,15 +67,15 @@ export default function FilterMobile (props){
                                 </ul>
                             </div>
                             <div>
-                                <div className="btn-group">
-                                    <select className="form-select" id="mySelect" onChange={SortingTheProduct}>
+                                <div style={{display:"flex",gridGap:"10px"}}>
+                                    <select style={{width:"40%"}} className="form-select" id="mySelect" onChange={SortingTheProduct}>
                                         <option defaultValue>Sort</option>
                                         {sortOptions.map((item)=><option key={item} value={item}>{item}</option>)}
                                     </select>
+                                    <div>
+                                        <button className="clearFilter" onClick={ClearFilter}>Clear Filter</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <button onClick={ClearFilter}>Clear Filter</button>
                             </div>
                         </div>
                     </div>
