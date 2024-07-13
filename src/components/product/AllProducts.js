@@ -91,7 +91,7 @@ const AllProducts = () => {
                 !pageLoader && 
 
             <div style={{marginTop:"80px"}}>
-                <div className="row">
+                <div className="row" style={{marginLeft:0,marginRight:0}}>
                     <div className="col-md-12 d-flex productPage flex-wrap">
                         <div className="col-md-3">
                             {/* start - For laptop and desktop */}
