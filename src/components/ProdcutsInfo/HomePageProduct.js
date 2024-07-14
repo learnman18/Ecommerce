@@ -73,7 +73,9 @@ return(
         <div style={{position:"absolute",right:"20px"}}>
             <CartToast displayALertMsg={alertForCartItem}  selectedProductName={prodcutName}></CartToast>
         </div>
-        <CartFooter></CartFooter>
+        <div className="d-none d-md-block">
+            <CartFooter></CartFooter>            
+        </div>
     </>
 )
 }

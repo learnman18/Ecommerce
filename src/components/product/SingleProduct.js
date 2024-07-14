@@ -76,7 +76,9 @@ const SingleProduct = () => {
                     ))
                 }
             </div>
-            <CartFooter></CartFooter>
+            <div className="d-none d-md-block">
+                <CartFooter></CartFooter>            
+            </div>
         </>
     )
 }
