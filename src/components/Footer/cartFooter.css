@@ -1,0 +1,70 @@
+.mainCartFooter{
+    min-width: 978px;
+    border-top: 1px solid #ddd;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.cartFooter {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footerItems{
+    width: 90%;
+    margin: 0 auto;
+    padding: 25px;
+}
+.Pyr2uI {
+    padding: 0 5px;
+    border-right: 1px solid #878787;
+    text-decoration: none;
+    color: inherit;
+}
+.Pyr2uI:last-child {
+    border-right: none;
+}
+._1mBSCr {
+    margin-left: 25px;
+}
+
+
+/* EMpty Cart page CSS */
+
+.emptyCart{
+    min-height: 400px;
+}
+
+.emptyCart-base-mainContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.emptyCart-base-emptyDesc {
+    font-size: 14px;
+    color: #7e818c;
+}
+.emptyCart-base-emptyText {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.emptyCartButton{
+    color: #ff3f6c;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid #ff3f6c;
+    display: inline-block;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+}

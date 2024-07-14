@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import {useProductContext} from "../context/ProductContext"
+import CartFooter from "../Footer/CartFooter";
 
 const SingleProduct = () => {
 
@@ -35,7 +36,7 @@ const SingleProduct = () => {
 
     return(
         <>
-            <div style={{marginTop:"80px"}}>
+            <div style={{marginTop:"80px",minHeight:400}}>
                 {
                     product && 
                     product.map((item)=>(
@@ -75,6 +76,7 @@ const SingleProduct = () => {
                     ))
                 }
             </div>
+            <CartFooter></CartFooter>
         </>
     )
 }

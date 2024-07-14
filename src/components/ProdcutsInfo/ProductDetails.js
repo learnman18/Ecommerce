@@ -17,7 +17,7 @@ const ProductSpecification = () => {
             {
                 HomePageItems.map((currentProd , index) => {
                     return currentProd.selectedProductName === productName &&  
-                    <div key={currentProd.productId} className="ecommerce container" style={{marginTop:"80px"}}>
+                    <div key={currentProd.productId} className="ecommerce container" style={{marginTop:"80px",minHeight:400}}>
                         <HomePageProducts key={index = index+1} productID={currentProd.productId} firstImage={currentProd.productImg1} prodcutName={currentProd.selectedProductName}
                         secondImage={currentProd.productImg2} thirdImage={currentProd.productImg3}
                         mainImage={currentProd.productMain} productDescription={currentProd.selectedProdDesc} productPrice={currentProd.price}
