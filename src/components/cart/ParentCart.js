@@ -4,6 +4,8 @@ import React from "react";
 import {useBadgeContext} from "../context/BadgeContextProvider";
 import Cart from "../ProdcutsInfo/Cart";
 import ProductInsideCart from "../product/ProductInsideCart";
+import CartFooter from "../Footer/CartFooter";
+import EmptyCart from "./EmptyCart";
 
 const ParentCart = () => {
 
@@ -13,7 +15,10 @@ const ParentCart = () => {
         <div style={{marginTop:"80px"}}>
             {cartBadge > 0  && <Cart></Cart>}
             {productCartBadge > 0 && <ProductInsideCart></ProductInsideCart>}
-            {!cartBadge && !productCartBadge && <h3>No Item in cart</h3>}
+            {!cartBadge && !productCartBadge && <><EmptyCart></EmptyCart></>}
+            <div className="d-none d-md-block">
+                <CartFooter></CartFooter>            
+            </div>
         </div>
     )
 }

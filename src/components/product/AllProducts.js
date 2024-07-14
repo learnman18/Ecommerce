@@ -4,6 +4,7 @@ import FilterMobile from "./filters/FilterMobile";
 import axios from "axios";
 import Spinner from "../pageLoader/Spinner";
 import { Link } from "react-router-dom";
+import CartFooter from "../Footer/CartFooter";
 
 const AllProducts = () => {
 
@@ -199,6 +200,7 @@ const AllProducts = () => {
                 </div>
             </div>
             }
+            <CartFooter></CartFooter>
         </>
     )
 }
